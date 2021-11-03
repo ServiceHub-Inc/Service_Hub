@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:servicehub/pages/ServiceDetailPage/widgets/ServiceDetailActionButtons.dart';
 
 class ServiceDetailPage extends StatelessWidget {
-  final data = Get.arguments;
+  final String image;
+  final String title;
+  final String description;
+
+  ServiceDetailPage({Key key, this.image, this.title, this.description})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,7 @@ class ServiceDetailPage extends StatelessWidget {
             title: Row(
               children: [
                 Text(
-                  data[1],
+                  title,
                   style: GoogleFonts.oxygen(fontSize: 18, color: Colors.white),
                 ),
                 SizedBox(
@@ -39,7 +43,7 @@ class ServiceDetailPage extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
               background: Image.asset(
-                data[0],
+                image,
                 fit: BoxFit.cover,
                 colorBlendMode: BlendMode.darken,
                 color: Colors.black.withOpacity(0.7),
@@ -69,7 +73,7 @@ class ServiceDetailPage extends StatelessWidget {
                     height: 20,
                   ),
                   Text(
-                    data[2],
+                    description,
                     textAlign: TextAlign.justify,
                     style: GoogleFonts.oxygen(
                       fontSize: 16.5,

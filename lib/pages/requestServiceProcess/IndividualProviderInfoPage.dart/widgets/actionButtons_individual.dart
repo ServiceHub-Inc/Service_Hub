@@ -41,10 +41,12 @@ class ActionButtonsIndividual extends StatelessWidget {
                                 child: Text(
                                   "Back",
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
                                 ),
                                 onPressed: () {
-                                  Get.back();
+                                  Navigator.pop(context);
                                 },
                                 width: 120,
                               ),
@@ -56,12 +58,19 @@ class ActionButtonsIndividual extends StatelessWidget {
                                       color: Colors.white, fontSize: 20),
                                 ),
                                 onPressed: () {
-                                  // bottom sheet here
-                                  Get.bottomSheet(Container(
-                                    height: 200,
-                                    color: Colors.white,
-                                    child: SubmitRequestBottomSheetCorporate(),
-                                  ));
+                                  Navigator.pop(context);
+                                  showBottomSheet(
+                                    context: context,
+                                    elevation: 5.0,
+                                    builder: (context) {
+                                      return Container(
+                                        height: 200,
+                                        color: Colors.white,
+                                        child:
+                                            SubmitRequestBottomSheetCorporate(),
+                                      );
+                                    },
+                                  );
                                 },
                                 width: 120,
                               ),

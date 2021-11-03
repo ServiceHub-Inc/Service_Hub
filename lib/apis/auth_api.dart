@@ -47,6 +47,7 @@ class AuthApi {
     String phone,
     String email,
     String password,
+    String confirmPassword,
     String refCode,
   }) async {
     print("API called");

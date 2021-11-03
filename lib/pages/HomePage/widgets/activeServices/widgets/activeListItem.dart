@@ -1,6 +1,5 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:servicehub/pages/HomePage/widgets/activeServices/ActiveServicesDetailPages/activeServiceDetialPage/activeServiceDetailPage.dart';
@@ -138,56 +137,48 @@ class ActiveListItem extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                  child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                  child: Column(
                                 children: [
-                                  Stack(
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(
-                                        EvaIcons.calendarOutline,
-                                        color: HexColor('32CD32'),
-                                        size: 50.0,
-                                      ),
-                                      Container(
-                                        color: Colors.white,
-                                        child: Text(
-                                          '16\nSept',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontSize: 10.0,
-                                            fontWeight: FontWeight.w600,
+                                      Stack(
+                                        children: [
+                                          Icon(
+                                            EvaIcons.calendarOutline,
+                                            color: HexColor('32CD32'),
+                                            size: 50.0,
                                           ),
-                                        ),
-                                      )
+                                          Positioned(
+                                            left: 11.0,
+                                            top: 15.0,
+                                            child: Container(
+                                              color: Colors.white,
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 3, vertical: 1),
+                                              child: Text(
+                                                '16\nSept',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  fontSize: 10.0,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ],
                                   ),
-                                  SizedBox(width: 6.0),
-                                  // Expanded(
-                                  //   child: Column(
-                                  //     mainAxisSize: MainAxisSize.min,
-                                  //     crossAxisAlignment:
-                                  //         CrossAxisAlignment.center,
-                                  //     children: [
-                                  //       Text(
-                                  //         'Start Date & Time',
-                                  //         style: TextStyle(
-                                  //           color: Colors.grey[400],
-                                  //           fontSize: 12,
-                                  //           fontWeight: FontWeight.w400,
-                                  //         ),
-                                  //       ),
-                                  //       SizedBox(height: 2.0),
-                                  //       Text(
-                                  //         '21.08.21, 10:00 AM',
-                                  //         style: TextStyle(
-                                  //           color: Colors.grey[700],
-                                  //           fontSize: 13.0,
-                                  //           fontWeight: FontWeight.w600,
-                                  //         ),
-                                  //       ),
-                                  //     ],
-                                  //   ),
-                                  // ),
+                                  SizedBox(height: 10.0),
+                                  Text(
+                                    '10:00 AM',
+                                    style: TextStyle(
+                                      color: Colors.grey[700],
+                                      fontSize: 13.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
                                 ],
                               ))
                             ],

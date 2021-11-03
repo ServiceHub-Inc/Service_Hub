@@ -82,7 +82,6 @@
 // }
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:servicehub/pages/ServiceDetailPage/ServiceDetailPage.dart';
 
@@ -109,7 +108,11 @@ class PopularServiceListItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ServiceDetailPage(),
+            builder: (context) => ServiceDetailPage(
+              image: imageUrl,
+              title: serviceTitle,
+              description: serviceDescription,
+            ),
           ),
         );
       },

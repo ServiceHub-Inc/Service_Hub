@@ -146,7 +146,7 @@ class _SignUpFormsState extends State<SignUpForms> {
             // Repeat Password
             TextFormField(
               textInputAction: TextInputAction.next,
-              keyboardType: TextInputType.number,
+              keyboardType: TextInputType.text,
               obscureText: !_showRepeatPassword,
               controller: confirmPassword,
               decoration: InputDecoration(
@@ -206,7 +206,7 @@ class _SignUpFormsState extends State<SignUpForms> {
                       )
                     : _globals.getLoading
                         ? SpinKitCircle(
-                            size: 25,
+                            size: 27,
                             color: Colors.white,
                           )
                         : Text(
@@ -233,6 +233,7 @@ class _SignUpFormsState extends State<SignUpForms> {
                         "phone": phone.text,
                         "email": email.text,
                         "password": password.text,
+                        "confirmPassword": confirmPassword.text,
                         "refCode": refCode.text,
                       };
                       var res = await AuthController.signup(details);

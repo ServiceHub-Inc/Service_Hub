@@ -55,6 +55,7 @@ class AuthController {
       String phone = details["phone"] ?? "";
       String email = details["email"] ?? "";
       String password = details["password"] ?? "";
+      String confirmPassword = details["confirmPassword"] ?? "";
 
       _def.setLoading(true);
 
@@ -65,6 +66,7 @@ class AuthController {
           phone: phone,
           email: email,
           password: password,
+          confirmPassword: confirmPassword,
         );
 
         if (res != null) {
