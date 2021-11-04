@@ -2,14 +2,18 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:servicehub/models/pendingServiceModel.dart';
 import 'package:servicehub/pages/HomePage/widgets/activeServices/ActiveServicesDetailPages/activeServiceDetialPage/activeServiceDetailPage.dart';
+import 'package:servicehub/utils/util.dart';
 
 class ActiveListItem extends StatelessWidget {
   final bool isEmpty;
-  const ActiveListItem({Key key, this.isEmpty}) : super(key: key);
+  final PendingServiceDatum service;
+  const ActiveListItem({Key key, this.isEmpty, this.service}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String serviceDate = Utilities.serviceDateFormat(service.startDate);
     return isEmpty
         ? Container(
             margin: EdgeInsets.only(bottom: 10.0),
@@ -105,7 +109,7 @@ class ActiveListItem extends StatelessWidget {
                                           padding: const EdgeInsets.only(
                                               bottom: 4.0),
                                           child: Text(
-                                            'Driving',
+                                            service.serviceId.first.description,
                                             style: GoogleFonts.oxygen(
                                               fontSize: 12,
                                               fontWeight: FontWeight.w700,
@@ -129,7 +133,7 @@ class ActiveListItem extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.all(2.0),
                                     child: Text(
-                                      'Kwadjo Amarh',
+                                      service.nameOfPerson,
                                       style: GoogleFonts.oxygen(
                                         fontSize: 12,
                                         fontWeight: FontWeight.w600,
@@ -163,7 +167,7 @@ class ActiveListItem extends StatelessWidget {
                                             padding: EdgeInsets.symmetric(
                                                 horizontal: 3, vertical: 1),
                                             child: Text(
-                                              '16\nSept',
+                                              "${serviceDate.split(" ")[0]}\n${serviceDate.split(" ")[1]}",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize: 10.0,

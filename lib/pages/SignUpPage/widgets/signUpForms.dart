@@ -237,16 +237,7 @@ class _SignUpFormsState extends State<SignUpForms> {
                         "refCode": refCode.text,
                         "context": context,
                       };
-                      var res = await AuthController.signup(details);
-
-                      if (res != null) {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => MyBottomNaigationBar(),
-                            ),
-                            (route) => false);
-                      }
+                      await AuthController.signup(details);
                     } else {
                       showErrorMessage(context, "Passwords do not match");
                     }

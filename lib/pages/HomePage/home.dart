@@ -1,7 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:servicehub/controllers/serviceControllers.dart';
+import 'package:servicehub/models/pendingServiceModel.dart';
 import 'package:servicehub/pages/HomePage/widgets/InviteOthersLink.dart';
 import 'package:servicehub/pages/HomePage/widgets/activeServices/allActiveServiceList/widgets/allActiveServiceListItem.dart';
 import 'package:servicehub/pages/HomePage/widgets/popularServices/PopularServiceList.dart';
@@ -18,6 +21,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<PendingServiceDatum> pendingServices;
+  Future<List<PendingServiceDatum>> getPendingServices;
+
+  @override
+  initState() {
+    getPendingServices = ServiceController.pendingServices(context);
+
+    super.initState();
+  }
+
   // bottomNavigation index
   @override
   Widget build(BuildContext context) {
@@ -158,7 +171,36 @@ class _HomePageState extends State<HomePage> {
             ),
 
             // Active Service
-            ActiveServices(),
+            FutureBuilder<List<PendingServiceDatum>>(
+                future: getPendingServices,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.none ||
+                      snapshot.connectionState == ConnectionState.active ||
+                      snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child: SpinKitCircle(
+                        color: HexColor('32CD32'),
+                        size: 28,
+                      ),
+                    );
+                  } else if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.hasError) {
+                      return Text('Error');
+                    } else if (snapshot.hasData) {
+                      print("=====+++======");
+                      print(snapshot.data);
+                      print("=====++======");
+                      pendingServices = snapshot.data;
+
+                      return ActiveServices(services: snapshot.data);
+                    } else {
+                      print("no data");
+                      return Container();
+                    }
+                  }
+                  print("not done");
+                  return Container();
+                }),
 
             SizedBox(
               height: 10,

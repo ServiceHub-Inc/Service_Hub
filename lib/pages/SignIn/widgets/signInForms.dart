@@ -112,20 +112,11 @@ class _SignInFormsState extends State<SignInForms> {
                       ),
                 onPressed: () async {
                   if (email.text.isNotEmpty && password.text.isNotEmpty) {
-                    var res = await AuthController.login(
+                    await AuthController.login(
                       context,
                       email.text,
                       password.text,
                     );
-
-                    if (res != null) {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MyBottomNaigationBar(),
-                          ),
-                          (route) => false);
-                    }
                   } else {
                     showErrorMessage(context, "Please fill all fields");
                   }

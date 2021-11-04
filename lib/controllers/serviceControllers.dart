@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:servicehub/apis/auth_api.dart';
+import 'package:servicehub/apis/services_api.dart';
+import 'package:servicehub/models/pendingServiceModel.dart';
 import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
 import 'package:servicehub/provider/globals.dart';
 import 'package:servicehub/utils/internet_check.dart';
@@ -10,44 +12,35 @@ import 'package:servicehub/utils/localStorage.dart';
 import 'package:servicehub/utils/serviceLocator.dart';
 import 'package:servicehub/utils/widgets/errorWidget.dart';
 
-class AuthController {
-  static login(
+class ServiceController {
+  static Future<List<PendingServiceDatum>> pendingServices(
     BuildContext context,
-    String email,
-    String password,
   ) async {
     final _def = Provider.of<Globals>(context, listen: false);
 
     try {
-      LocalStorageService storageService = locator<LocalStorageService>();
       bool checkinternet = await internetCheck();
       _def.setLoading(true);
       if (checkinternet) {
-        var res = await AuthApi.login(email: email, password: password);
+        var res = await ServicesApi.pendingServices();
 
         if (res != null) {
-          _def.setUser(res);
-          storageService.isLoggedIn = true;
-          storageService.username = res.userId;
-
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MyBottomNaigationBar(),
-            ),
-            (route) => false,
-          );
+          return res;
         }
       } else {
         showNetworkMessage(context, "Please check your internet");
       }
     } on PlatformException catch (e) {
       showErrorMessage(context, e.message ?? "An Error Occured");
+      return null;
     } on SocketException catch (_) {
       showErrorMessage(context, "Error connecting to service");
+      return null;
     } finally {
       print('finished');
       _def.setLoading(false);
+      // ignore: control_flow_in_finally
+      return null;
     }
   }
 

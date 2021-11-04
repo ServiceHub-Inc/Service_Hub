@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:servicehub/pages/HomePage/IntroSliderScreen.dart';
+import 'package:servicehub/utils/localStorage.dart';
+import 'package:servicehub/utils/serviceLocator.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key key}) : super(key: key);
@@ -12,6 +13,7 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> with TickerProviderStateMixin {
   Animation<double> logoAnimation;
   AnimationController logoController;
+  LocalStorageService storageService = locator<LocalStorageService>();
 
   @override
   void initState() {

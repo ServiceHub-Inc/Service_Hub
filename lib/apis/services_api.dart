@@ -2,18 +2,18 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:servicehub/models/loginModel.dart';
+import 'package:servicehub/models/pendingServiceModel.dart';
 import 'package:servicehub/utils/constants.dart';
 
-class AuthApi {
-  static Future<UserData> login({String email, String password}) async {
+class ServicesApi {
+  static Future pendingServices({String email, String password}) async {
     print("API called");
-    final url = "${Constants.url}/login";
+    final url = "${Constants.url}/pending-services";
     print(url);
 
-    final response = await http.post(
+    final response = await http.get(
       Uri.parse(url),
       headers: Constants.header,
-      body: jsonEncode({'email': email, 'password': password}),
     );
 
     print("======");
@@ -22,9 +22,10 @@ class AuthApi {
 
     if (response.statusCode == 200) {
       Map<String, dynamic> result = json.decode(response.body);
-      LoginModel res = loginModelFromJson(response.body.toString());
+      PendingServiceModel res = pendingServiceModelFromJson(response.body);
 
       if (res.code == "000") {
+        print("00000000");
         return res.data;
       } else {
         throw PlatformException(

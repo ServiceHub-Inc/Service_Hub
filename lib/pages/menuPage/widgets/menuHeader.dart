@@ -1,17 +1,23 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
+import 'package:servicehub/models/loginModel.dart';
 import 'package:servicehub/pages/menuPage/menuDetailPages/userProfileDetailPage.dart';
 import 'package:servicehub/pages/settignsPage/settingsPage.dart';
+import 'package:servicehub/provider/globals.dart';
 
 class MenuHeader extends StatelessWidget {
   const MenuHeader({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    UserData user;
     final width = MediaQuery.of(context).size.width;
+    final _globals = Provider.of<Globals>(context);
+    user = _globals.getUser;
+
     return // profile pic, name and rest
         GestureDetector(
       // user profile details
@@ -74,7 +80,7 @@ class MenuHeader extends StatelessWidget {
                         Container(
                           width: width * 0.5,
                           child: Text(
-                            'Ameri Gurui',
+                            "${user.firstName} ${user.lastName}",
                             style: GoogleFonts.oxygen(
                                 color: HexColor('44493D'),
                                 fontSize: 20,
@@ -95,7 +101,7 @@ class MenuHeader extends StatelessWidget {
                               // overflow: TextOverflow.ellipsis,
                               children: [
                                 TextSpan(
-                                    text: ' AD1756',
+                                    text: ' ${user.userId}',
                                     style: GoogleFonts.oxygen(
                                       color: HexColor('32CD32'),
                                       fontSize: 12,
