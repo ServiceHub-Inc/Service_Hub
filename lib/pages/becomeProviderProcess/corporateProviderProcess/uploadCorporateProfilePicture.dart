@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:image_picker_widget/enum/image_picker_widget_shape.dart';
 
 import 'package:image_picker_widget/image_picker_widget.dart';
@@ -52,7 +51,7 @@ class _UploadCorporateProfilePictureState
                     ),
                     RichText(
                         text: TextSpan(
-                            text: "2",
+                            text: "3",
                             style: GoogleFonts.oxygen(
                                 fontSize: 14, color: HexColor('949498')),
                             children: [

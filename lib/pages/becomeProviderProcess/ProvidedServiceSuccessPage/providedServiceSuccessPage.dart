@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
 
 // ignore: must_be_immutable
 class ProvidedServiceSuccesspage extends StatelessWidget {
@@ -158,7 +159,12 @@ class ProvidedServiceSuccesspage extends StatelessWidget {
                 height: 50,
                 child: TextButton(
                     onPressed: () {
-                      Get.offAllNamed('/MyBottomNavigationBar');
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MyBottomNaigationBar(),
+                          ),
+                          (route) => false);
                       //   Alert(
                       //     style: alertStyle,
                       //     buttons: [

@@ -1,6 +1,5 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:servicehub/pages/ServiceDetailPage/widgets/customeProviderBottomSheet.dart';
@@ -61,11 +60,19 @@ class ServiceDetailActionButtons extends StatelessWidget {
           ),
           child: TextButton(
             onPressed: () {
-              Get.bottomSheet(Container(
-                height: 224,
-                color: Colors.white,
-                child: CustomeProviderBottomSheet(),
-              ));
+              showModalBottomSheet(
+                elevation: 5.0,
+                barrierColor: Colors.black.withOpacity(0.4),
+                isDismissible: true,
+                context: context,
+                builder: (context) {
+                  return Container(
+                    height: 200,
+                    color: Colors.white,
+                    child: CustomeProviderBottomSheet(),
+                  );
+                },
+              );
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

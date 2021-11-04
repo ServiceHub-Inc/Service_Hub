@@ -57,7 +57,7 @@ class ServicelistItem extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                '${new String.fromCharCodes(new Runes('\u20B5'))} $priceRange',
+                '¢$priceRange',
                 style: GoogleFonts.oxygen(
                   fontSize: 12,
                   color: HexColor('32CD32'),

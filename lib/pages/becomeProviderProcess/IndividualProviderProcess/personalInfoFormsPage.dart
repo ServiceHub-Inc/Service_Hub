@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker_widget/enum/image_picker_widget_shape.dart';
 import 'package:image_picker_widget/image_picker_widget.dart';
+import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
 import 'package:servicehub/pages/becomeProviderProcess/IndividualProviderProcess/widgets/personalInfoForms.dart';
 import 'package:servicehub/pages/becomeProviderProcess/IndividualProviderProcess/widgets/personalInfoFormsHeader.dart';
 import 'package:servicehub/pages/becomeProviderProcess/IndividualProviderProcess/widgets/refereeInfoForms.dart';
@@ -33,6 +34,13 @@ class _IndividualInfoFormsPageState extends State<IndividualInfoFormsPage> {
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.white),
       backgroundColor: HexColor('32CD32'),
+      leading: IconButton(
+        icon: Icon(
+          Icons.arrow_back,
+          color: Colors.white,
+        ),
+        onPressed: () => MyBottomNaigationBar(),
+      ),
     );
     return Scaffold(
       backgroundColor: HexColor('F6F6F6'),

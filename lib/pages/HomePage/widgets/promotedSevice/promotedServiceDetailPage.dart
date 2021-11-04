@@ -1,11 +1,11 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:servicehub/pages/MessagesPage/chatDetailPage.dart';
 import 'package:servicehub/pages/requestServiceProcess/IndividualProviderInfoPage.dart/IndividualProviderInfoPage.dart';
+import 'package:servicehub/utils/callsEmailService.dart';
 
 import 'widget/submitRequestBottomSheet.dart';
 
@@ -45,6 +45,8 @@ class PromotedServiceDetailPage extends StatelessWidget {
       this.endDate})
       : super(key: key);
 
+  final UrlLauncherService _service = UrlLauncherService();
+
   @override
   Widget build(BuildContext context) {
     // double _width = MediaQuery.of(context).size.width;
@@ -67,7 +69,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
             ),
             elevation: 0,
             title: Text(
-              providerName,
+              serviceType,
               style: GoogleFonts.oxygen(
                 fontSize: 18.5,
                 fontWeight: FontWeight.w600,
@@ -85,7 +87,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        data[2],
+                        providerName,
                         style: GoogleFonts.oxygen(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -97,7 +99,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                         height: 4,
                       ),
                       CircleAvatar(
-                        backgroundImage: AssetImage(data[3]),
+                        backgroundImage: AssetImage(providerImageUrl),
                         radius: 24,
                       ),
                       SizedBox(
@@ -114,7 +116,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                             width: 5,
                           ),
                           Text(
-                            data[5].toString(),
+                            providerId.toString(),
                             style: GoogleFonts.oxygen(
                               fontSize: 14,
                               color: Colors.amber,
@@ -136,7 +138,9 @@ class PromotedServiceDetailPage extends StatelessWidget {
                             backgroundColor:
                                 HexColor('32CD32').withOpacity(0.3),
                             label: GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                _service.call('0548739273');
+                              },
                               child: Container(
                                 height: 20,
                                 child: Row(
@@ -172,7 +176,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => ChatDetailPage(
-                                    username: data[2],
+                                    username: providerName,
                                   ),
                                 ),
                               );
@@ -226,7 +230,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  data[4],
+                  providerId,
                   style: GoogleFonts.oxygen(
                     fontSize: 14,
                     color: HexColor('44493D'),
@@ -252,7 +256,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  data[7],
+                  startDate,
                   style: GoogleFonts.oxygen(
                     fontSize: 14,
                     color: HexColor('44493D'),
@@ -278,7 +282,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  data[8],
+                  endDate,
                   style: GoogleFonts.oxygen(
                     fontSize: 14,
                     color: HexColor('44493D'),
@@ -329,7 +333,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                         SizedBox(width: 30.0),
                         Flexible(
                           child: Text(
-                            data[6],
+                            serviceDescription,
                             style: GoogleFonts.oxygen(
                               fontSize: 14,
                               color: HexColor('44493D'),
@@ -435,8 +439,11 @@ class PromotedServiceDetailPage extends StatelessWidget {
                                       ),
                                       onPressed: () {
                                         Navigator.pop(context);
-                                        showBottomSheet(
+                                        showModalBottomSheet(
                                           elevation: 5.0,
+                                          barrierColor:
+                                              Colors.black.withOpacity(0.4),
+                                          isDismissible: true,
                                           context: context,
                                           builder: (context) {
                                             return Container(

@@ -30,7 +30,7 @@ class InviteOthers extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                'Invite others and win up to ${new String.fromCharCodes(new Runes('\u20B5'))} 500',
+                'Invite others and win up to ¢500',
                 style: GoogleFonts.oxygen(
                     color: HexColor('44493D'),
                     fontSize: 14,

@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
+import 'package:servicehub/pages/notificationsPage/notificationpage.dart';
 
 class Details extends StatelessWidget {
   const Details({Key key}) : super(key: key);
@@ -225,7 +227,13 @@ class Details extends StatelessWidget {
                                       color: Colors.white, fontSize: 20),
                                 ),
                                 onPressed: () {
-                                  Get.offAllNamed('/MyBottomNavigationBar');
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            MyBottomNaigationBar(),
+                                      ),
+                                      (route) => false);
                                 },
                                 width: 120,
                               ),
@@ -312,7 +320,13 @@ class Details extends StatelessWidget {
                                               fontSize: 20),
                                         ),
                                         onPressed: () {
-                                          Get.offAllNamed('/notificationsPage');
+                                          Navigator.pushAndRemoveUntil(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    NotificationsPage(),
+                                              ),
+                                              (route) => false);
                                         },
                                         width: 120,
                                       ),

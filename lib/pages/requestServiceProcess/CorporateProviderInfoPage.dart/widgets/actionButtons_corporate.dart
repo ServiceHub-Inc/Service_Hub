@@ -1,23 +1,27 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:servicehub/pages/MessagesPage/messagespage.dart';
+import 'package:servicehub/pages/MessagesPage/chatDetailPage.dart';
+import 'package:servicehub/utils/callsEmailService.dart';
 
 import 'submitRequestBottomSheet_corporate.dart';
 
 // ignore: must_be_immutable
 class ActionButtonsCorporate extends StatelessWidget {
   var alertStyle = AlertStyle(
-      isCloseButton: true,
-      isOverlayTapDismiss: true,
-      descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('44493D')),
-      titleStyle: GoogleFonts.oxygen(
-          fontSize: 16,
-          color: HexColor('32CD32'),
-          fontWeight: FontWeight.w600));
+    isCloseButton: true,
+    isOverlayTapDismiss: true,
+    descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('44493D')),
+    titleStyle: GoogleFonts.oxygen(
+      fontSize: 16,
+      color: HexColor('32CD32'),
+      fontWeight: FontWeight.w600,
+    ),
+  );
+
+  final UrlLauncherService _service = UrlLauncherService();
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +62,10 @@ class ActionButtonsCorporate extends StatelessWidget {
                                 ),
                                 onPressed: () {
                                   Navigator.pop(context);
-                                  showBottomSheet(
+                                  showModalBottomSheet(
                                     elevation: 5.0,
+                                    barrierColor: Colors.black.withOpacity(0.4),
+                                    isDismissible: true,
                                     context: context,
                                     builder: (context) {
                                       return Container(
@@ -99,7 +105,9 @@ class ActionButtonsCorporate extends StatelessWidget {
                   child: IconButton(
                       icon: (Icon(EvaIcons.phoneCall,
                           size: 18, color: Colors.white)),
-                      onPressed: () {}),
+                      onPressed: () {
+                        _service.call('0548739273');
+                      }),
                 ),
                 SizedBox(
                   width: 10,
@@ -115,7 +123,9 @@ class ActionButtonsCorporate extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MessagesPage(),
+                            builder: (context) => ChatDetailPage(
+                              username: "James Anthony",
+                            ),
                           ),
                         );
                       }),

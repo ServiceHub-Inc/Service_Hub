@@ -59,8 +59,7 @@ class AllPopularServiceListItem extends StatelessWidget {
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white)),
-                        Text(
-                            ' From ${new String.fromCharCodes(new Runes('\u20B5'))} $priceRange',
+                        Text(' From ¢$priceRange',
                             style: GoogleFonts.oxygen(
                                 fontSize: 14, color: Colors.white)),
                       ],

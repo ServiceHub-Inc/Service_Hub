@@ -115,7 +115,12 @@ class SignUpButton extends StatelessWidget {
         ),
         onPressed: () {
           // get Route
-          Get.offAll(MyBottomNaigationBar());
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MyBottomNaigationBar(),
+              ),
+              (route) => false);
         },
       ),
     );

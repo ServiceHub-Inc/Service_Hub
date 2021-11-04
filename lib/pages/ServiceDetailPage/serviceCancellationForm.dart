@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
 
 class ServiceCancellationFormPage extends StatelessWidget {
   const ServiceCancellationFormPage({Key key}) : super(key: key);
@@ -174,8 +175,13 @@ class ServiceCancellationFormPage extends StatelessWidget {
                                   buttons: [
                                     DialogButton(
                                       onPressed: () {
-                                        Get.offAllNamed(
-                                            '/MyBottomNavigationBar');
+                                        Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  MyBottomNaigationBar(),
+                                            ),
+                                            (route) => false);
                                       },
                                       child: Text(
                                         "Ok",

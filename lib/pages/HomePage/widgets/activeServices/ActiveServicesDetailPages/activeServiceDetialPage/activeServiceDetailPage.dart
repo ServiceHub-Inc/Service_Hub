@@ -6,6 +6,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
 import 'package:servicehub/pages/MessagesPage/chatDetailPage.dart';
+import 'package:servicehub/pages/ServiceDetailPage/serviceCancellationForm.dart';
 import 'package:servicehub/pages/rateProvider/rateProviderPage.dart';
 import 'package:servicehub/utils/callsEmailService.dart';
 
@@ -595,8 +596,13 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                                             color: Colors.white, fontSize: 20),
                                       ),
                                       onPressed: () {
-                                        Get.offAllNamed(
-                                            '/serviceCancellationFormPage');
+                                        Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ServiceCancellationFormPage(),
+                                            ),
+                                            (route) => false);
                                       },
                                       width: 120,
                                     ),

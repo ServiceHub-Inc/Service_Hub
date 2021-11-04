@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
 import 'widgets/selectedNetworkImage.dart';
 
 class PaymentPage extends StatelessWidget {
@@ -89,7 +90,13 @@ class PaymentPage extends StatelessWidget {
                                 buttons: [
                                   DialogButton(
                                     onPressed: () {
-                                      Get.offAllNamed('/MyBottomNavigationBar');
+                                      Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                MyBottomNaigationBar(),
+                                          ),
+                                          (route) => false);
                                     },
                                     child: Text(
                                       "Ok",
