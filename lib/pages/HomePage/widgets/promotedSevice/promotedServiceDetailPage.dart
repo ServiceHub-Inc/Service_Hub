@@ -11,6 +11,15 @@ import 'widget/submitRequestBottomSheet.dart';
 
 // ignore: must_be_immutable
 class PromotedServiceDetailPage extends StatelessWidget {
+  final String imageUrl;
+  final String serviceType;
+  final String providerName;
+  final String providerImageUrl;
+  final String providerId;
+  final String providerRating;
+  final String serviceDescription;
+  final String startDate;
+  final String endDate;
   // alert style
   var alertStyle = AlertStyle(
       isCloseButton: true,
@@ -21,7 +30,20 @@ class PromotedServiceDetailPage extends StatelessWidget {
           color: HexColor('32CD32'),
           fontWeight: FontWeight.w600));
   // build list function
-  var data = Get.arguments;
+  // var data = Get.arguments;
+
+  PromotedServiceDetailPage(
+      {Key key,
+      this.imageUrl,
+      this.serviceType,
+      this.providerName,
+      this.providerImageUrl,
+      this.providerId,
+      this.providerRating,
+      this.serviceDescription,
+      this.startDate,
+      this.endDate})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +59,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
               background: Image.asset(
-                data[0],
+                imageUrl,
                 fit: BoxFit.cover,
                 colorBlendMode: BlendMode.darken,
                 color: Colors.black.withOpacity(0.7),
@@ -45,7 +67,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
             ),
             elevation: 0,
             title: Text(
-              data[1],
+              providerName,
               style: GoogleFonts.oxygen(
                 fontSize: 18.5,
                 fontWeight: FontWeight.w600,

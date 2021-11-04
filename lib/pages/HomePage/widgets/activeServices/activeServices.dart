@@ -8,7 +8,8 @@ class ActiveServices extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 100,
+      height: 110,
+      padding: EdgeInsets.symmetric(vertical: 4.0),
       child: ListView.builder(
         itemCount: 3,
         scrollDirection: Axis.horizontal,

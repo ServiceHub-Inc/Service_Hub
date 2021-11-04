@@ -54,6 +54,7 @@ class AuthController {
       String lastName = details["lastName"] ?? "";
       String phone = details["phone"] ?? "";
       String email = details["email"] ?? "";
+      String refCode = details["refCode"] ?? "";
       String password = details["password"] ?? "";
       String confirmPassword = details["confirmPassword"] ?? "";
 
@@ -67,6 +68,7 @@ class AuthController {
           email: email,
           password: password,
           confirmPassword: confirmPassword,
+          refCode: refCode,
         );
 
         if (res != null) {

@@ -33,21 +33,20 @@ class PromotedServiceListItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4.0),
       child: GestureDetector(
         onTap: () {
-          // Get.toNamed('/promotedServiceDetailPage', arguments: [
-          //   imageUrl,
-          //   serviceType,
-          //   providerName,
-          //   providerImageUrl,
-          //   providerId,
-          //   providerRating,
-          //   serviceDescription,
-          //   startDate,
-          //   endDate,
-          // ]);
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => PromotedServiceDetailPage(),
+              builder: (context) => PromotedServiceDetailPage(
+                imageUrl: imageUrl,
+                serviceDescription: serviceDescription,
+                serviceType: serviceType,
+                providerId: providerId,
+                providerImageUrl: providerImageUrl,
+                providerRating: providerRating.toString(),
+                startDate: startDate,
+                endDate: endDate,
+                providerName: providerName,
+              ),
             ),
           );
         },

@@ -19,18 +19,14 @@ class AllPopularServiceListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Get.toNamed("/serviceDetailPage",
-        //     arguments: [imageUrl, serviceTitle, serviceDescription]);
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ServiceDetailPage(),
-          ),
-        );
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ServiceDetailPage(),
+            builder: (context) => ServiceDetailPage(
+              image: imageUrl,
+              title: serviceTitle,
+              description: serviceDescription,
+            ),
           ),
         );
       },

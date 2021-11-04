@@ -1,19 +1,22 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:servicehub/pages/menuPage/menuDetailPages/promoteService/promoteServiceBannerUploadPage.dart';
 
 class PromoteServiceFormPage extends StatefulWidget {
+  final String image;
+  final String title;
+
+  const PromoteServiceFormPage({Key key, this.image, this.title})
+      : super(key: key);
   @override
   _PromoteServiceFormPageState createState() => _PromoteServiceFormPageState();
 }
 
 class _PromoteServiceFormPageState extends State<PromoteServiceFormPage> {
 // passing data from the list
-  final data = Get.arguments;
 
   final _formKey = GlobalKey<FormBuilderState>();
 
@@ -49,7 +52,7 @@ class _PromoteServiceFormPageState extends State<PromoteServiceFormPage> {
                       SizedBox(
                         width: 10,
                       ),
-                      Text(data[1],
+                      Text(widget.title,
                           style: GoogleFonts.oxygen(
                             color: HexColor('32CD32'),
                             fontSize: 14,

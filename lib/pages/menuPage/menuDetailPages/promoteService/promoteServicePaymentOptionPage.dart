@@ -31,14 +31,15 @@ class PromoteServicePaymentOptionPage extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 2, horizontal: 15),
                 child: GestureDetector(
                   onTap: () {
-                    // Get.toNamed('/promoteServicePaymentPage', arguments: [
-                    //   paymentOptionController.paymentOptions[index].imageUrl,
-                    //   paymentOptionController.paymentOptions[index].optionTitle,
-                    // ]);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PromoteServicePaymentPage(),
+                        builder: (context) => PromoteServicePaymentPage(
+                          image: paymentOptionController
+                              .paymentOptions[index].imageUrl,
+                          title: paymentOptionController
+                              .paymentOptions[index].optionTitle,
+                        ),
                       ),
                     );
                   },

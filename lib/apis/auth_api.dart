@@ -63,6 +63,7 @@ class AuthApi {
         'phone': phone,
         'email': email,
         'password': password,
+        'confirmPassword': confirmPassword,
         'referralCode': refCode,
       }),
     );
@@ -74,11 +75,11 @@ class AuthApi {
     if (response.statusCode == 200) {
       Map<String, dynamic> result = json.decode(response.body);
 
-      if (result["responseCode"] == "000") {
+      if (result["code"] == "000") {
         return result["message"].toString();
       } else {
         throw PlatformException(
-          code: result["responseCode"].toString(),
+          code: result["code"].toString(),
           message: result["message"].toString(),
         );
       }

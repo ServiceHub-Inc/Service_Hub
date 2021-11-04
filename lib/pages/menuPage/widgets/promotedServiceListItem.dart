@@ -22,14 +22,13 @@ class PromotedServiceListItem extends StatelessWidget {
         child: ListTile(
           contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
           onTap: () {
-            // Get.toNamed("/promoteServiceFormPage", arguments: [
-            //   imageUrl,
-            //   serviceTitle,
-            // ]);
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => PromoteServiceFormPage(),
+                builder: (context) => PromoteServiceFormPage(
+                  image: imageUrl,
+                  title: serviceTitle,
+                ),
               ),
             );
           },

@@ -26,12 +26,14 @@ class ServicelistItem extends StatelessWidget {
         color: Colors.white,
         child: ListTile(
           onTap: () {
-            // Get.toNamed("/serviceDetailPage",
-            //     arguments: [imageUrl, serviceTitle, serviceDescription]);
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ServiceDetailPage(),
+                builder: (context) => ServiceDetailPage(
+                  image: imageUrl,
+                  title: serviceTitle,
+                  description: serviceDescription,
+                ),
               ),
             );
           },

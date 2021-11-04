@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
 import 'package:servicehub/pages/MessagesPage/chatDetailPage.dart';
+import 'package:servicehub/pages/rateProvider/rateProviderPage.dart';
 import 'package:servicehub/utils/callsEmailService.dart';
 
 class ActiveServiceDetailPage extends StatefulWidget {
@@ -471,7 +473,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                                         ),
                                       ),
                                       onPressed: () {
-                                        Get.back();
+                                        Navigator.pop(context);
                                       },
                                       width: 120,
                                     ),
@@ -484,7 +486,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                                         ),
                                       ),
                                       onPressed: () {
-                                        Get.back();
+                                        Navigator.pop(context);
                                         Alert(
                                           context: context,
                                           style: alertStyle,
@@ -502,8 +504,13 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                                                     fontSize: 16),
                                               ),
                                               onPressed: () {
-                                                Get.offAllNamed(
-                                                    '/RateProviderPage');
+                                                Navigator.pushAndRemoveUntil(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          RateProviderPage(),
+                                                    ),
+                                                    (route) => false);
                                               },
                                               width: 120,
                                             ),
@@ -515,8 +522,13 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                                                     fontSize: 16),
                                               ),
                                               onPressed: () {
-                                                Get.offAllNamed(
-                                                    '/MyBottomNavigationBar');
+                                                Navigator.pushAndRemoveUntil(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          MyBottomNaigationBar(),
+                                                    ),
+                                                    (route) => false);
                                               },
                                               width: 120,
                                             ),

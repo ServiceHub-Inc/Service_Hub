@@ -43,29 +43,30 @@ class AllPromotedServiceList extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PromotedServiceDetailPage(),
+                              builder: (context) => PromotedServiceDetailPage(
+                                imageUrl: promotedServiceController
+                                    .promotedServices[index].imageUrl,
+                                serviceType: promotedServiceController
+                                    .promotedServices[index].serviceType,
+                                startDate: promotedServiceController
+                                    .promotedServices[index].startDate,
+                                endDate: promotedServiceController
+                                    .promotedServices[index].endDate,
+                                serviceDescription: promotedServiceController
+                                    .promotedServices[index].serviceDescription,
+                                providerName: promotedServiceController
+                                    .promotedServices[index].providerName,
+                                providerImageUrl: promotedServiceController
+                                    .promotedServices[index].providerImageUrl,
+                                providerId: promotedServiceController
+                                    .promotedServices[index].providerId,
+                                providerRating: promotedServiceController
+                                    .promotedServices[index].providerRating
+                                    .toString(),
+                              ),
                             ),
                           );
-                          // Get.toNamed('/promotedServiceDetailPage', arguments: [
-                          //   promotedServiceController
-                          //       .promotedServices[index].imageUrl,
-                          //   promotedServiceController
-                          //       .promotedServices[index].serviceType,
-                          //   promotedServiceController
-                          //       .promotedServices[index].providerName,
-                          //   promotedServiceController
-                          //       .promotedServices[index].providerImageUrl,
-                          //   promotedServiceController
-                          //       .promotedServices[index].providerId,
-                          //   promotedServiceController
-                          //       .promotedServices[index].providerRating,
-                          //   promotedServiceController
-                          //       .promotedServices[index].serviceDescription,
-                          //   promotedServiceController
-                          //       .promotedServices[index].startDate,
-                          //   promotedServiceController
-                          //       .promotedServices[index].endDate,
-                          // ]);
+                          
                         },
                         child: ALlPromtedServiceListItem(
                           providerName: promotedServiceController

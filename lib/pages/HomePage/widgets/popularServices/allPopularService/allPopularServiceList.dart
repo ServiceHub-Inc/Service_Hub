@@ -45,20 +45,16 @@ class AllPopularServiceList extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ServiceDetailPage(),
+                              builder: (context) => ServiceDetailPage(
+                                description: popularServiceController
+                                    .popularServices[index].serviceDescription,
+                                image: popularServiceController
+                                    .popularServices[index].imageUrl,
+                                title: popularServiceController
+                                    .popularServices[index].serviceTitle,
+                              ),
                             ),
                           );
-                          // Get.toNamed('/serviceDetailPage', arguments: [
-                          //   popularServiceController
-                          //       .popularServices[index].imageUrl,
-                          //   popularServiceController
-                          //       .popularServices[index].serviceTitle,
-                          //   popularServiceController
-                          //       .popularServices[index].priceRange
-                          //       .toString(),
-                          //   popularServiceController
-                          //       .popularServices[index].serviceDescription,
-                          // ]);
                         },
                         child: AllPopularServiceListItem(
                           imageUrl: popularServiceController

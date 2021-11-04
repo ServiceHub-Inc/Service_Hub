@@ -226,7 +226,7 @@ class _SignUpFormsState extends State<SignUpForms> {
                       email.text.isNotEmpty &&
                       password.text.isNotEmpty &&
                       confirmPassword.text.isNotEmpty) {
-                    if (password.text != confirmPassword.text) {
+                    if (password.text == confirmPassword.text) {
                       Map<String, dynamic> details = {
                         "firstName": fName.text,
                         "lastName": lName.text,
@@ -235,6 +235,7 @@ class _SignUpFormsState extends State<SignUpForms> {
                         "password": password.text,
                         "confirmPassword": confirmPassword.text,
                         "refCode": refCode.text,
+                        "context": context,
                       };
                       var res = await AuthController.signup(details);
 

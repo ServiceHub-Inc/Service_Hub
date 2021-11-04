@@ -7,6 +7,11 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import '../../widgets/selectedNetworkImage.dart';
 
 class PromoteServicePaymentPage extends StatelessWidget {
+  final String image;
+  final String title;
+
+  const PromoteServicePaymentPage({Key key, this.image, this.title})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormBuilderState>();
