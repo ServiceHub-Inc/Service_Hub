@@ -25,6 +25,7 @@ class ServiceController {
         var res = await ServicesApi.pendingServices();
 
         if (res != null) {
+          print("res is not null");
           return res;
         }
       } else {
@@ -39,8 +40,6 @@ class ServiceController {
     } finally {
       print('finished');
       _def.setLoading(false);
-      // ignore: control_flow_in_finally
-      return null;
     }
   }
 

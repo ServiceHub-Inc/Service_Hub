@@ -11,7 +11,7 @@ class Constants {
   static int kPinLength = 4;
   static String kBackgroundImage = "assets/images/bk2.jpg";
   static String noDataFound = "assets/images/no_file.svg";
-  static String bankName = "ROKEL COMMERCIAL BANK";
+  static String apiError = "assets/images/errors.svg";
 
   //Urls
 

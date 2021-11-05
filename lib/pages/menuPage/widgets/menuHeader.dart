@@ -13,8 +13,8 @@ class MenuHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    UserData user;
     final width = MediaQuery.of(context).size.width;
+    UserData user;
     final _globals = Provider.of<Globals>(context);
     user = _globals.getUser;
 
@@ -96,7 +96,7 @@ class MenuHeader extends StatelessWidget {
                               text: 'ID:',
                               style: GoogleFonts.oxygen(
                                 color: HexColor('44493D'),
-                                fontSize: 12,
+                                fontSize: 13,
                               ),
                               // overflow: TextOverflow.ellipsis,
                               children: [
@@ -104,7 +104,8 @@ class MenuHeader extends StatelessWidget {
                                     text: ' ${user.userId}',
                                     style: GoogleFonts.oxygen(
                                       color: HexColor('32CD32'),
-                                      fontSize: 12,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600,
                                     )),
                               ]),
                         ),

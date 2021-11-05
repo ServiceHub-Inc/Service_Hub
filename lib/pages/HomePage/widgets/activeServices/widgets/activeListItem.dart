@@ -87,8 +87,11 @@ class ActiveListItem extends StatelessWidget {
                       ),
 
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 2.0, vertical: 2.0),
+                        padding: EdgeInsets.only(
+                          left: 10.0,
+                          top: 2.0,
+                          bottom: 2.0,
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -160,8 +163,8 @@ class ActiveListItem extends StatelessWidget {
                                           size: 50.0,
                                         ),
                                         Positioned(
-                                          left: 11.0,
-                                          top: 15.0,
+                                          left: 12.0,
+                                          top: 14.0,
                                           child: Container(
                                             color: Colors.white,
                                             padding: EdgeInsets.symmetric(
@@ -170,7 +173,7 @@ class ActiveListItem extends StatelessWidget {
                                               "${serviceDate.split(" ")[0]}\n${serviceDate.split(" ")[1]}",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                fontSize: 10.0,
+                                                fontSize: 11.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
                                             ),
@@ -182,7 +185,7 @@ class ActiveListItem extends StatelessWidget {
                                 ),
                                 SizedBox(height: 3.0),
                                 Text(
-                                  '10:00 AM',
+                                  service.startTime,
                                   style: TextStyle(
                                     color: Colors.grey[700],
                                     fontSize: 11.5,

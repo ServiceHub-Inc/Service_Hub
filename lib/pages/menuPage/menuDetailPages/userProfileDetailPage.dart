@@ -2,8 +2,10 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-
+import 'package:servicehub/models/loginModel.dart';
+import 'package:servicehub/provider/globals.dart';
 import '../widgets/headerProfile.dart';
 
 class UserProfileDetailPage extends StatelessWidget {
@@ -11,7 +13,11 @@ class UserProfileDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserData user;
+    final _globals = Provider.of<Globals>(context);
+    user = _globals.getUser;
     // final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -38,7 +44,7 @@ class UserProfileDetailPage extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        'Ameri',
+                        user.firstName,
                         style: GoogleFonts.oxygen(
                           fontSize: 14,
                           color: HexColor("44493D"),
@@ -57,7 +63,7 @@ class UserProfileDetailPage extends StatelessWidget {
                                   children: <Widget>[
                                     TextField(
                                       decoration: InputDecoration(
-                                        labelText: 'Guruis Ameri',
+                                        labelText: user.firstName,
                                       ),
                                     ),
                                   ],
@@ -84,7 +90,7 @@ class UserProfileDetailPage extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        'Guruis',
+                        user.lastName,
                         style: GoogleFonts.oxygen(
                           fontSize: 14,
                           color: HexColor("44493D"),
@@ -130,7 +136,7 @@ class UserProfileDetailPage extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        'guruiameris@gmail.com',
+                        user.email,
                         style: GoogleFonts.oxygen(
                           fontSize: 14,
                           color: HexColor("44493D"),
@@ -153,7 +159,7 @@ class UserProfileDetailPage extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        '0245678657',
+                        user.phone,
                         style: GoogleFonts.oxygen(
                           fontSize: 14,
                           color: HexColor("44493D"),

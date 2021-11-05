@@ -2,12 +2,19 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
+import 'package:servicehub/models/loginModel.dart';
+import 'package:servicehub/provider/globals.dart';
 
 class HeaderProfile extends StatelessWidget {
   const HeaderProfile({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    UserData user;
+    final _globals = Provider.of<Globals>(context);
+    user = _globals.getUser;
+
     return Container(
       width: double.infinity,
       height: 250,
@@ -53,7 +60,7 @@ class HeaderProfile extends StatelessWidget {
             ),
             // name and ID here
             Text(
-              'Ameri Guruis ',
+              '${user.firstName} ${user.lastName}',
               style: GoogleFonts.oxygen(
                   color: HexColor('44493D'),
                   fontSize: 20,
@@ -71,11 +78,12 @@ class HeaderProfile extends StatelessWidget {
                   // overflow: TextOverflow.ellipsis,
                   children: [
                     TextSpan(
-                        text: ' AD1756',
-                        style: GoogleFonts.oxygen(
-                          color: HexColor('32CD32'),
-                          fontSize: 12,
-                        )),
+                      text: ' ${user.userId}',
+                      style: GoogleFonts.oxygen(
+                        color: HexColor('32CD32'),
+                        fontSize: 12,
+                      ),
+                    ),
                   ]),
             )
           ],

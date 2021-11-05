@@ -31,7 +31,7 @@ class Utilities {
   }
 
   static String serviceDateFormat(DateTime date) {
-    return DateFormat("MMMM d").format(date);
+    return DateFormat("MMM dd").format(date);
 
     // return DateFormat.yMMMd().format(_date);
   }

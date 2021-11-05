@@ -6,7 +6,7 @@ import 'package:servicehub/models/pendingServiceModel.dart';
 import 'package:servicehub/utils/constants.dart';
 
 class ServicesApi {
-  static Future pendingServices({String email, String password}) async {
+  static Future<List<PendingServiceDatum>> pendingServices() async {
     print("API called");
     final url = "${Constants.url}/pending-services";
     print(url);

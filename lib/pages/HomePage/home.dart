@@ -26,9 +26,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   initState() {
-    getPendingServices = ServiceController.pendingServices(context);
-
     super.initState();
+    getPendingServices = ServiceController.pendingServices(context);
+    // _rebuild();
   }
 
   // bottomNavigation index
@@ -171,36 +171,37 @@ class _HomePageState extends State<HomePage> {
             ),
 
             // Active Service
-            FutureBuilder<List<PendingServiceDatum>>(
-                future: getPendingServices,
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.none ||
-                      snapshot.connectionState == ConnectionState.active ||
-                      snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
-                      child: SpinKitCircle(
-                        color: HexColor('32CD32'),
-                        size: 28,
-                      ),
-                    );
-                  } else if (snapshot.connectionState == ConnectionState.done) {
-                    if (snapshot.hasError) {
-                      return Text('Error');
-                    } else if (snapshot.hasData) {
-                      print("=====+++======");
-                      print(snapshot.data);
-                      print("=====++======");
-                      pendingServices = snapshot.data;
 
-                      return ActiveServices(services: snapshot.data);
-                    } else {
-                      print("no data");
-                      return Container();
-                    }
+            FutureBuilder<List<PendingServiceDatum>>(
+              future: getPendingServices,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.none ||
+                    snapshot.connectionState == ConnectionState.active ||
+                    snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: SpinKitCircle(
+                      color: HexColor('32CD32'),
+                      size: 28,
+                    ),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Text('Error');
+                }
+
+                if (snapshot.connectionState == ConnectionState.done) {
+                  print("done");
+                  pendingServices = snapshot.data;
+
+                  if (pendingServices == null) {
+                    return Container();
+                  } else {
+                    return ActiveServices(services: snapshot.data);
                   }
-                  print("not done");
-                  return Container();
-                }),
+                }
+                return null;
+              },
+            ),
 
             SizedBox(
               height: 10,

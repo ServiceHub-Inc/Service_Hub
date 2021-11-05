@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:servicehub/controllers/chatController.dart';
+import 'package:servicehub/models/chatModel.dart';
+import 'package:intl/intl.dart';
 import 'package:servicehub/utils/callsEmailService.dart';
 
 class ChatDetailPage extends StatefulWidget {
@@ -93,9 +95,17 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                 child: Obx(() {
                   if (chatListController.memberChatList.isNotEmpty) {
                     return ListView.builder(
+                      // shrinkWrap: true,
+                      reverse: true,
                       itemCount: chatListController.memberChatList.length,
                       itemBuilder: (context, index) {
-                        var chat = chatListController.memberChatList[index];
+                        final reversedIndex =
+                            chatListController.memberChatList.length -
+                                1 -
+                                index;
+
+                        var chat =
+                            chatListController.memberChatList[reversedIndex];
 
                         if (chat.media.mediaType == null) {
                           return SizedBox(
@@ -132,6 +142,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
             ),
             CreateMeassageArea(
               controller: _controller,
+              focusNode: _focusNode,
             ),
           ],
         ));
@@ -143,17 +154,40 @@ class CreateMeassageArea extends StatefulWidget {
   CreateMeassageArea({
     Key key,
     @required TextEditingController controller,
+    this.focusNode,
   })  : _controller = controller,
         super(key: key);
 
   final TextEditingController _controller;
+  final FocusNode focusNode;
 
   @override
   _CreateMeassageAreaState createState() => _CreateMeassageAreaState();
 }
 
 class _CreateMeassageAreaState extends State<CreateMeassageArea> {
+  final chatListController = Get.put(ChatController());
+  List<ChatMessage> messages;
   bool textEntered = false;
+
+  @override
+  initState() {
+    super.initState();
+    messages = chatListController.memberChatList;
+  }
+
+  addMessage(String message) {
+    chatListController.memberChatList.add(ChatMessage(
+      messageText: message,
+      createdAt: DateFormat.jm().format(DateTime.now()),
+      fromUser: true,
+      media: ChatMedia(),
+    ));
+
+    Future.delayed(Duration(seconds: 1), () {
+      chatListController.replyMessage();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -166,25 +200,20 @@ class _CreateMeassageAreaState extends State<CreateMeassageArea> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Padding(
-            padding: const EdgeInsets.all(4.0),
+            padding: EdgeInsets.symmetric(horizontal: 6.0),
             child: Icon(
               Icons.add_circle_outline,
-              color: Colors.grey[400],
+              color: Colors.grey[500],
+              size: 34,
             ),
           ),
           if (!textEntered) ...[
             Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Icon(
-                Icons.photo_camera_outlined,
-                color: Colors.grey[400],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
+              padding: EdgeInsets.symmetric(horizontal: 6.0),
               child: Icon(
                 EvaIcons.imageOutline,
-                color: Colors.grey[400],
+                color: Colors.grey[500],
+                size: 34,
               ),
             ),
           ],
@@ -197,11 +226,15 @@ class _CreateMeassageAreaState extends State<CreateMeassageArea> {
                   textEntered = val.isNotEmpty;
                 });
               },
+              focusNode: widget.focusNode,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.only(left: 10.0, right: 2.0),
                 isDense: true,
                 fillColor: Colors.grey[200],
                 focusColor: HexColor('32CD32').withOpacity(0.5),
+                labelText: "Type a message..",
+                labelStyle: TextStyle(color: Colors.grey[400]),
+                floatingLabelBehavior: FloatingLabelBehavior.never,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
                   borderSide: BorderSide(
@@ -218,18 +251,27 @@ class _CreateMeassageAreaState extends State<CreateMeassageArea> {
           ),
           if (!textEntered) ...[
             Padding(
-              padding: const EdgeInsets.all(4.0),
+              padding: EdgeInsets.symmetric(horizontal: 6.0),
               child: Icon(
                 EvaIcons.micOutline,
-                color: Colors.grey[400],
+                color: Colors.grey[500],
+                size: 34,
               ),
             ),
           ] else ...[
             Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Icon(
-                Icons.send,
-                color: HexColor('32CD32'),
+              padding: EdgeInsets.symmetric(horizontal: 6.0),
+              child: IconButton(
+                onPressed: () {
+                  addMessage(widget._controller.text);
+                  widget._controller.text = '';
+                  // widget.focusNode.unfocus();
+                },
+                icon: Icon(
+                  Icons.send,
+                  color: HexColor('32CD32'),
+                  size: 34,
+                ),
               ),
             ),
           ]

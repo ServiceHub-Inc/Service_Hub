@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:get/state_manager.dart';
 import 'package:servicehub/models/chatModel.dart';
 
@@ -12,19 +14,17 @@ class ChatController extends GetxController {
     fetchChatList();
   }
 
-  // the function to retrive the list- Api goes here
-  void fetchChatList() async {
-    await Future.delayed(Duration(seconds: 1));
-    var chatList = [
+  void replyMessage() {
+    var chatList1 = [
       ChatMessage(
         createdAt: '10 : 15 am',
-        fromUser: true,
+        fromUser: false,
         media: ChatMedia(),
         messageText: "Hi..",
       ),
       ChatMessage(
         createdAt: '10 : 15 am',
-        fromUser: true,
+        fromUser: false,
         media: ChatMedia(),
         messageText: "I am Ameri, the service provider..",
       ),
@@ -42,13 +42,13 @@ class ChatController extends GetxController {
       ),
       ChatMessage(
         createdAt: '10 : 20 am',
-        fromUser: true,
+        fromUser: false,
         media: ChatMedia(),
         messageText: "I'll let you know by close of day.",
       ),
       ChatMessage(
         createdAt: '10 : 20 am',
-        fromUser: true,
+        fromUser: false,
         media: ChatMedia(),
         messageText: "Hope that's fine by you?",
       ),
@@ -60,13 +60,13 @@ class ChatController extends GetxController {
       ),
       ChatMessage(
         createdAt: '10 : 21 am',
-        fromUser: true,
+        fromUser: false,
         media: ChatMedia(),
         messageText: "ok.. A second..",
       ),
       ChatMessage(
         createdAt: '10 : 23 am',
-        fromUser: true,
+        fromUser: false,
         media: ChatMedia(mediaType: 'image', media: null),
         messageText: null,
       ),
@@ -84,13 +84,13 @@ class ChatController extends GetxController {
       ),
       ChatMessage(
         createdAt: '10 : 25 am',
-        fromUser: true,
+        fromUser: false,
         media: ChatMedia(),
         messageText: "Sure",
       ),
       ChatMessage(
         createdAt: '4 : 52 pm',
-        fromUser: true,
+        fromUser: false,
         media: ChatMedia(),
         messageText:
             "Hi.. So I checked my schedule and I think 1pm will be okay.\n Is that okay for you too?",
@@ -100,6 +100,37 @@ class ChatController extends GetxController {
         fromUser: false,
         media: ChatMedia(),
         messageText: "Perfect!! I'd have closed by that time.",
+      ),
+    ];
+
+    Random random = new Random();
+    int index = random.nextInt(chatList1.length);
+    var reply = chatList1[index];
+
+    memberChatList.add(reply);
+  }
+
+  // the function to retrive the list- Api goes here
+  void fetchChatList() async {
+    await Future.delayed(Duration(seconds: 1));
+    var chatList = [
+      ChatMessage(
+        createdAt: '10 : 12 am',
+        fromUser: true,
+        media: ChatMedia(),
+        messageText: "Hi..",
+      ),
+      ChatMessage(
+        createdAt: '10 : 15 am',
+        fromUser: true,
+        media: ChatMedia(),
+        messageText: "Hi",
+      ),
+      ChatMessage(
+        createdAt: '10 : 15 am',
+        fromUser: false,
+        media: ChatMedia(),
+        messageText: "I am Ameri, the service provider..",
       ),
     ];
 
