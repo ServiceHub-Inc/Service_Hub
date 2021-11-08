@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:servicehub/controllers/authController.dart';
-import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
 import 'package:servicehub/provider/globals.dart';
 import 'package:servicehub/utils/widgets/errorWidget.dart';
 

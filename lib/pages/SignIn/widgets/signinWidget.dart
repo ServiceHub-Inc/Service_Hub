@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:servicehub/pages/SignUpPage/signup.dart';
@@ -11,35 +12,21 @@ class SignInHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // double _height = MediaQuery.of(context).size.height;
-    // double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
+    double _width = MediaQuery.of(context).size.width;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // Container(
-        //   width: _width * 0.55,
-        //   height: _height * 0.075,
-        //   child: Image.asset("assets/appIcon/New Logo_1.jpg"),
-        // ),
-        SizedBox(height: 5.0),
-        Center(
-          child: AutoSizeText(
-            "Sign into your account",
-            style: GoogleFonts.oxygen(
-                fontSize: 34,
-                fontWeight: FontWeight.w600,
-                color: HexColor('44493D')),
-            maxLines: 1,
+        Container(
+          width: _width * 0.5,
+          height: _height * 0.13,
+          child: SvgPicture.asset(
+            "assets/sliderImages/login.svg",
           ),
         ),
-        // AutoSizeText(
-        //   "Sign into your account",
-        //   style: GoogleFonts.oxygen(
-        //       fontSize: 14,
-        //       fontWeight: FontWeight.normal,
-        //       color: HexColor('32CD32')),
-        // ),
+        SizedBox(height: 5.0),
+       
       ],
     );
   }
