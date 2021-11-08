@@ -2,12 +2,13 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:servicehub/pages/HomePage/widgets/promotedSevice/promotedServiceList.dart';
 import 'package:servicehub/pages/menuPage/menuDetailPages/becomeAgentPage/becomeAgent_PropseNewServicePage.dart';
 import 'package:servicehub/pages/menuPage/menuDetailPages/proposeNewServicePage.dart';
 import 'package:servicehub/pages/menuPage/menuDetailPages/requestReferealCodePage/requestReferalCodePage.dart';
 import 'package:servicehub/pages/menuPage/menuDetailPages/userProfileDetailPage.dart';
 import 'package:servicehub/pages/menuPage/widgets/menuHeader.dart';
+
+import 'menuDetailPages/promoteService/promoteServiceListPage.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({Key key}) : super(key: key);
@@ -183,7 +184,7 @@ class MenuPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => PromotedServiceList(),
+                          builder: (context) => PromoteServiceList(),
                         ),
                       );
                     },

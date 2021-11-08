@@ -19,7 +19,7 @@ class ActiveListItem extends StatelessWidget {
             margin: EdgeInsets.only(bottom: 10.0),
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Container(
-              width: 260,
+              width: 231,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(6),
@@ -45,7 +45,7 @@ class ActiveListItem extends StatelessWidget {
             ),
           )
         : Container(
-            margin: EdgeInsets.only(bottom: 10.0, top: 3.0),
+            margin: EdgeInsets.only(bottom: 10.0, top: 3),
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: GestureDetector(
                 onTap: () {
@@ -58,7 +58,7 @@ class ActiveListItem extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  width: 260,
+                  width: 231,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(6),
@@ -73,22 +73,13 @@ class ActiveListItem extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      // line
-                      Container(
-                        height: 0,
-                        width: 231.5,
-                        decoration: BoxDecoration(
-                          color: HexColor('32CD32'),
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                      ),
                       SizedBox(
                         height: 6,
                       ),
 
                       Padding(
                         padding: EdgeInsets.only(
-                          left: 10.0,
+                          left: 5.0,
                           top: 2.0,
                           bottom: 2.0,
                         ),
@@ -110,7 +101,7 @@ class ActiveListItem extends StatelessWidget {
                                       children: [
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              bottom: 4.0),
+                                              bottom: 6.0),
                                           child: Text(
                                             service.serviceId.first.description,
                                             style: GoogleFonts.oxygen(
@@ -127,14 +118,14 @@ class ActiveListItem extends StatelessWidget {
                                   ),
                                   //image
                                   CircleAvatar(
-                                    radius: 18,
+                                    radius: 21,
                                     backgroundColor: HexColor('32CD32'),
                                     backgroundImage: AssetImage(
                                       'assets/avatar/avatar1.jpg',
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(2.0),
+                                    padding: const EdgeInsets.all(3.0),
                                     child: Text(
                                       service.nameOfPerson,
                                       style: GoogleFonts.oxygen(
@@ -160,17 +151,23 @@ class ActiveListItem extends StatelessWidget {
                                         Icon(
                                           EvaIcons.calendarOutline,
                                           color: HexColor('32CD32'),
-                                          size: 50.0,
+                                          size: 60.0,
                                         ),
                                         Positioned(
-                                          left: 12.0,
+                                          left: 14.0,
                                           top: 14.0,
                                           child: Container(
                                             color: Colors.white,
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 3, vertical: 1),
+                                            margin: EdgeInsets.only(top: 1.0),
+                                            padding: EdgeInsets.only(
+                                              left: 5,
+                                              right: 5,
+                                              bottom: 1,
+                                              top: 5.0,
+                                            ),
                                             child: Text(
-                                              "${serviceDate.split(" ")[0]}\n${serviceDate.split(" ")[1]}",
+                                              "${serviceDate.split(" ")[0]}\n${serviceDate.split(" ")[1]}"
+                                                  .toUpperCase(),
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize: 11.0,
@@ -188,7 +185,7 @@ class ActiveListItem extends StatelessWidget {
                                   service.startTime,
                                   style: TextStyle(
                                     color: Colors.grey[700],
-                                    fontSize: 11.5,
+                                    fontSize: 11.0,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),

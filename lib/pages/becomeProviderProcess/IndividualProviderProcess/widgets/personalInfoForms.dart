@@ -2,6 +2,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:servicehub/pages/requestServiceProcess/selectRequestLocation/locationMap.dart';
 
 class IndividualInfoForms extends StatelessWidget {
   @override
@@ -178,9 +179,19 @@ class IndividualInfoForms extends StatelessWidget {
                     helperStyle: TextStyle(
                       color: HexColor('32CD32'),
                     ),
-                    suffixIcon: Icon(
-                      EvaIcons.navigation2Outline,
-                      color: HexColor('32CD32'),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        EvaIcons.navigation2Outline,
+                        color: HexColor('32CD32'),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LocationMapScreen(),
+                          ),
+                        );
+                      },
                     )),
 
                 // valueTransformer: (text) => num.tryParse(text),

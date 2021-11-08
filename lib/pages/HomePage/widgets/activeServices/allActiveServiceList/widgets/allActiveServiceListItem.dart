@@ -1,16 +1,108 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:servicehub/controllers/serviceControllers.dart';
+import 'package:servicehub/models/pendingServiceModel.dart';
 import 'package:servicehub/pages/HomePage/widgets/activeServices/ActiveServicesDetailPages/activeServiceDetialPage/activeServiceDetailPage.dart';
+import 'package:servicehub/pages/HomePage/widgets/activeServices/activeServices.dart';
+import 'package:servicehub/pages/ServicesListPage/widgets/searchbar.dart';
 
-class AllActiveServiceListItem extends StatelessWidget {
+class AllActiveServiceListItem extends StatefulWidget {
   const AllActiveServiceListItem({Key key}) : super(key: key);
+
+  @override
+  _AllActiveServiceListItemState createState() =>
+      _AllActiveServiceListItemState();
+}
+
+class _AllActiveServiceListItemState extends State<AllActiveServiceListItem> {
+  List<PendingServiceDatum> pendingServices;
+  Future<List<PendingServiceDatum>> getPendingServices;
+
+  @override
+  initState() {
+    super.initState();
+    getPendingServices = ServiceController.pendingServices(context);
+    // _rebuild();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        title: Text(
+          'All Pending Services',
+          style: GoogleFonts.oxygen(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+        ),
+        elevation: 0,
+        backgroundColor: HexColor('32CD32'),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: SearchBar(),
+          ),
+          Expanded(
+            child: FutureBuilder<List<PendingServiceDatum>>(
+              future: getPendingServices,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.none ||
+                    snapshot.connectionState == ConnectionState.active ||
+                    snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: SpinKitCircle(
+                      color: HexColor('32CD32'),
+                      size: 28,
+                    ),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Text('Error');
+                }
+
+                if (snapshot.connectionState == ConnectionState.done) {
+                  print("done");
+                  pendingServices = snapshot.data;
+
+                  if (pendingServices == null) {
+                    return Container();
+                  } else {
+                    return ListView.builder(itemBuilder: (context, index) {
+                      return ActiveServiceTile(
+                        service: pendingServices[index],
+                      );
+                    });
+                  }
+                }
+                return null;
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ActiveServiceTile extends StatelessWidget {
+  final PendingServiceDatum service;
+  const ActiveServiceTile({
+    Key key,
+    this.service,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: GestureDetector(
           onTap: () {
             // detail page
@@ -71,7 +163,7 @@ class AllActiveServiceListItem extends StatelessWidget {
                                       padding:
                                           const EdgeInsets.only(bottom: 4.0),
                                       child: Text(
-                                        'Driving',
+                                        service.serviceId.first.description,
                                         style: GoogleFonts.oxygen(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w700,
@@ -95,7 +187,7 @@ class AllActiveServiceListItem extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.all(4.0),
                                 child: Text(
-                                  'Kwadjo Amarh',
+                                  service.nameOfPerson,
                                   style: GoogleFonts.oxygen(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600,
@@ -114,9 +206,9 @@ class AllActiveServiceListItem extends StatelessWidget {
                             Icon(
                               EvaIcons.calendarOutline,
                               color: HexColor('32CD32'),
-                              size: 37.0,
+                              size: 45.0,
                             ),
-                            SizedBox(width: 6.0),
+                            SizedBox(width: 15.0),
                             Expanded(
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -126,15 +218,15 @@ class AllActiveServiceListItem extends StatelessWidget {
                                     'Start Date & Time',
                                     style: TextStyle(
                                       color: Colors.grey[400],
-                                      fontSize: 15.5,
+                                      fontSize: 15.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                   Text(
-                                    '21.08.2021, 10:00 AM',
+                                    '${service.startDate}, ${service.startTime}',
                                     style: TextStyle(
                                       color: Colors.grey[700],
-                                      fontSize: 16.5,
+                                      fontSize: 16.0,
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),

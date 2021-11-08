@@ -131,7 +131,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                   ),
                   Expanded(
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         // message button
                         Chip(

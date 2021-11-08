@@ -13,7 +13,7 @@ class ActiveServices extends StatelessWidget {
     } else {
       return Container(
         width: double.infinity,
-        height: 110,
+        height: 121,
         padding: EdgeInsets.symmetric(vertical: 4.0),
         child: ListView.builder(
           itemCount: services.length,
