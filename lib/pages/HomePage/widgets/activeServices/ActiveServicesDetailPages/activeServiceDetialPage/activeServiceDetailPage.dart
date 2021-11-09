@@ -85,12 +85,13 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                     Center(
                       child: Container(
                         width: width * 0.9,
+                        margin: EdgeInsets.only(bottom: 4.0),
                         child: Text(
                           widget.service.nameOfPerson,
                           style: GoogleFonts.oxygen(
-                              fontSize: 18,
+                              fontSize: 19,
                               color: HexColor("44493D"),
-                              fontWeight: FontWeight.w600),
+                              fontWeight: FontWeight.w700),
                           textAlign: TextAlign.center,
                           maxLines: 2,
                         ),
@@ -103,14 +104,14 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                         text: TextSpan(
                           text: 'Requester ID: ',
                           style: GoogleFonts.oxygen(
-                              fontSize: 12,
+                              fontSize: 14,
                               color: HexColor("B8B3B4"),
                               fontWeight: FontWeight.w600),
                           children: [
                             TextSpan(
                               text: widget.service.serviceId.first.id,
                               style: GoogleFonts.oxygen(
-                                fontSize: 12,
+                                fontSize: 14,
                                 color: HexColor("32CD32"),
                                 fontWeight: FontWeight.w600,
                               ),
@@ -135,13 +136,13 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                               _service.call(widget.service.contactOfPerson);
                             },
                             child: Container(
-                              height: 20,
+                              height: 23,
                               child: Row(
                                 children: [
                                   Icon(
                                     EvaIcons.phoneCall,
                                     color: HexColor("32CD32"),
-                                    size: 18,
+                                    size: 20,
                                   ),
                                   SizedBox(
                                     width: 10,
@@ -149,7 +150,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                                   Text(
                                     'Call',
                                     style: GoogleFonts.oxygen(
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       color: HexColor("32CD32"),
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -177,13 +178,13 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                               );
                             },
                             child: Container(
-                              height: 20,
+                              height: 23,
                               child: Row(
                                 children: [
                                   Icon(
                                     EvaIcons.messageCircle,
                                     color: HexColor("32CD32"),
-                                    size: 18,
+                                    size: 20,
                                   ),
                                   SizedBox(
                                     width: 10,
@@ -191,7 +192,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                                   Text(
                                     'Message',
                                     style: GoogleFonts.oxygen(
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       color: HexColor("32CD32"),
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -228,15 +229,16 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                       title: Text(
                         'Service Start Date',
                         style: GoogleFonts.oxygen(
-                          fontSize: 12,
+                          fontSize: 14,
                           color: HexColor("B8B3B3"),
                         ),
                       ),
                       subtitle: Text(
                         Utilities.newdateFormat(widget.service.startDate),
                         style: GoogleFonts.oxygen(
-                          fontSize: 14,
+                          fontSize: 16,
                           color: HexColor("44493D"),
+                          // fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
@@ -249,14 +251,14 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                       title: Text(
                         'Service Start Time',
                         style: GoogleFonts.oxygen(
-                          fontSize: 12,
+                          fontSize: 14,
                           color: HexColor("B8B3B3"),
                         ),
                       ),
                       subtitle: Text(
                         widget.service.startTime,
                         style: GoogleFonts.oxygen(
-                          fontSize: 14,
+                          fontSize: 16,
                           color: HexColor("44493D"),
                         ),
                       ),
@@ -271,7 +273,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                         title: Text(
                           'Name of Service Recipient (Requested for someone)',
                           style: GoogleFonts.oxygen(
-                            fontSize: 12,
+                            fontSize: 14,
                             color: HexColor("B8B3B3"),
                           ),
                         ),
@@ -281,7 +283,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                               ? widget.service.requester
                               : "N/A",
                           style: GoogleFonts.oxygen(
-                            fontSize: 14,
+                            fontSize: 16,
                             color: HexColor("44493D"),
                           ),
                         ),
@@ -296,14 +298,14 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                       title: Text(
                         'Contact of Service Recipient',
                         style: GoogleFonts.oxygen(
-                          fontSize: 12,
+                          fontSize: 14,
                           color: HexColor("B8B3B3"),
                         ),
                       ),
                       subtitle: Text(
                         widget.service.contactOfPerson,
                         style: GoogleFonts.oxygen(
-                          fontSize: 14,
+                          fontSize: 16,
                           color: HexColor("44493D"),
                         ),
                       ),
@@ -333,14 +335,14 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                       title: Text(
                         'Service Location',
                         style: GoogleFonts.oxygen(
-                          fontSize: 12,
+                          fontSize: 14,
                           color: HexColor("B8B3B3"),
                         ),
                       ),
                       subtitle: Text(
                         widget.service.location,
                         style: GoogleFonts.oxygen(
-                          fontSize: 14,
+                          fontSize: 16,
                           color: HexColor("32CD32"),
                         ),
                       ),
@@ -355,7 +357,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                       title: Text(
                         'Fees Receivable',
                         style: GoogleFonts.oxygen(
-                          fontSize: 12,
+                          fontSize: 14,
                           color: HexColor("B8B3B3"),
                         ),
                       ),
@@ -363,7 +365,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                         text: TextSpan(
                           text: 'GH¢ ',
                           style: GoogleFonts.oxygen(
-                              fontSize: 14,
+                              fontSize: 16,
                               color: HexColor("B8B3B3"),
                               fontWeight: FontWeight.w600),
                           children: [
@@ -372,7 +374,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                                 widget.service.feesCharged,
                               ),
                               style: GoogleFonts.oxygen(
-                                fontSize: 14,
+                                fontSize: 16,
                                 color: HexColor("32CD32"),
                                 fontWeight: FontWeight.w600,
                               ),
@@ -387,7 +389,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                       title: Text(
                         'Service Description',
                         style: GoogleFonts.oxygen(
-                          fontSize: 12,
+                          fontSize: 14,
                           color: HexColor("B8B3B3"),
                         ),
                       ),
@@ -395,7 +397,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                         widget.service.serviceId.first.description ??
                             'I need a temporary driver to pick and drop-off my kids at school for the next 2 days. Provider would deploy his own vehicle to execute this service',
                         style: GoogleFonts.oxygen(
-                          fontSize: 14,
+                          fontSize: 16,
                           color: HexColor("44493D"),
                         ),
                       ),
@@ -452,7 +454,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                               color: HexColor('32CD32'),
                               borderRadius: BorderRadius.circular(50)),
                           width: width * 0.3,
-                          height: 35,
+                          height: 38,
                           child: TextButton(
                               onPressed: () {
                                 // end service alert

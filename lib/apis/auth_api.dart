@@ -22,9 +22,9 @@ class AuthApi {
 
     if (response.statusCode == 200) {
       Map<String, dynamic> result = json.decode(response.body);
-      LoginModel res = loginModelFromJson(response.body.toString());
 
-      if (res.code == "000") {
+      if (result["code"] == "000") {
+        LoginModel res = loginModelFromJson(response.body.toString());
         return res.data;
       } else {
         throw PlatformException(
