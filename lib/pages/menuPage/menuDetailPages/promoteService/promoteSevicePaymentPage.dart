@@ -40,7 +40,7 @@ class PromoteServicePaymentPage extends StatelessWidget {
       body: Column(
         children: [
           // slected image here
-          SelectedNetworkImage(data[0], data[1]),
+          SelectedNetworkImage(image, title),
           // phone number field
           Container(
             width: double.infinity,
@@ -61,9 +61,10 @@ class PromoteServicePaymentPage extends StatelessWidget {
                           child: FormBuilderTextField(
                             name: 'phoneNumber',
                             decoration: InputDecoration(
-                                labelText: 'Phone number',
-                                border: InputBorder.none,
-                                prefixText: '+233'),
+                              labelText: 'Phone number',
+                              border: InputBorder.none,
+                              prefixText: '+233',
+                            ),
 
                             // valueTransformer: (text) => num.tryParse(text),
                             validator: FormBuilderValidators.compose([
@@ -103,9 +104,11 @@ class PromoteServicePaymentPage extends StatelessWidget {
                                           (route) => false);
                                     },
                                     child: Text(
-                                      "Ok",
+                                      "OK",
                                       style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                      ),
                                     ),
                                   )
                                 ]).show();
@@ -118,8 +121,9 @@ class PromoteServicePaymentPage extends StatelessWidget {
                           ),
                         ),
                         decoration: BoxDecoration(
-                            color: HexColor('32CD32'),
-                            borderRadius: BorderRadius.circular(50)),
+                          color: HexColor('32CD32'),
+                          borderRadius: BorderRadius.circular(50),
+                        ),
                       ),
                     ],
                   ),

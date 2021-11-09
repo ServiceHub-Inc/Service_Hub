@@ -1,17 +1,19 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:servicehub/models/pendingServiceModel.dart';
 import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
 import 'package:servicehub/pages/MessagesPage/chatDetailPage.dart';
 import 'package:servicehub/pages/ServiceDetailPage/serviceCancellationForm.dart';
 import 'package:servicehub/pages/rateProvider/rateProviderPage.dart';
 import 'package:servicehub/utils/callsEmailService.dart';
+import 'package:servicehub/utils/util.dart';
 
 class ActiveServiceDetailPage extends StatefulWidget {
-  const ActiveServiceDetailPage({Key key}) : super(key: key);
+  final PendingServiceDatum service;
+  const ActiveServiceDetailPage({Key key, this.service}) : super(key: key);
 
   @override
   _ActiveServiceDetailPageState createState() =>
@@ -46,8 +48,10 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: HexColor('32CD32'),
-        title: Text('Driving (Active)',
-            style: GoogleFonts.oxygen(fontSize: 18, color: Colors.white)),
+        title: Text(
+          '${widget.service.serviceId.first.description} (Active)',
+          style: GoogleFonts.oxygen(fontSize: 18, color: Colors.white),
+        ),
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -68,7 +72,8 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                     Center(
                       child: CircleAvatar(
                         backgroundImage: AssetImage(
-                          'assets/serviceImages/Home-tutor.png',
+                          Utilities.getServiceDisplayImage(
+                              widget.service.serviceId.first.description),
                         ),
                         radius: 50,
                       ),
@@ -81,7 +86,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                       child: Container(
                         width: width * 0.9,
                         child: Text(
-                          'Kwadjo Amo',
+                          widget.service.nameOfPerson,
                           style: GoogleFonts.oxygen(
                               fontSize: 18,
                               color: HexColor("44493D"),
@@ -96,20 +101,22 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                     Center(
                       child: RichText(
                         text: TextSpan(
-                            text: 'Requester ID: ',
-                            style: GoogleFonts.oxygen(
+                          text: 'Requester ID: ',
+                          style: GoogleFonts.oxygen(
+                              fontSize: 12,
+                              color: HexColor("B8B3B4"),
+                              fontWeight: FontWeight.w600),
+                          children: [
+                            TextSpan(
+                              text: widget.service.serviceId.first.id,
+                              style: GoogleFonts.oxygen(
                                 fontSize: 12,
-                                color: HexColor("B8B3B4"),
-                                fontWeight: FontWeight.w600),
-                            children: [
-                              TextSpan(
-                                text: ' AD17443',
-                                style: GoogleFonts.oxygen(
-                                    fontSize: 12,
-                                    color: HexColor("32CD32"),
-                                    fontWeight: FontWeight.w600),
-                              )
-                            ]),
+                                color: HexColor("32CD32"),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
 
@@ -125,7 +132,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                           label: GestureDetector(
                             onTap: () {
                               print('calling');
-                              _service.call('05458902913');
+                              _service.call(widget.service.contactOfPerson);
                             },
                             child: Container(
                               height: 20,
@@ -164,7 +171,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => ChatDetailPage(
-                                    username: 'Kwadjo Amo',
+                                    username: widget.service.nameOfPerson,
                                   ),
                                 ),
                               );
@@ -184,9 +191,10 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                                   Text(
                                     'Message',
                                     style: GoogleFonts.oxygen(
-                                        fontSize: 12,
-                                        color: HexColor("32CD32"),
-                                        fontWeight: FontWeight.w600),
+                                      fontSize: 12,
+                                      color: HexColor("32CD32"),
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   )
                                 ],
                               ),
@@ -225,7 +233,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                         ),
                       ),
                       subtitle: Text(
-                        '02/10/202',
+                        Utilities.newdateFormat(widget.service.startDate),
                         style: GoogleFonts.oxygen(
                           fontSize: 14,
                           color: HexColor("44493D"),
@@ -246,7 +254,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                         ),
                       ),
                       subtitle: Text(
-                        '10:00 AM',
+                        widget.service.startTime,
                         style: GoogleFonts.oxygen(
                           fontSize: 14,
                           color: HexColor("44493D"),
@@ -254,26 +262,31 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                       ),
                     ),
                     //service recipient
-                    ListTile(
-                      leading: Icon(
-                        EvaIcons.personOutline,
-                        color: HexColor('32CD32'),
-                      ),
-                      title: Text(
-                        'Name of Service Recipient (Requested for someone)',
-                        style: GoogleFonts.oxygen(
-                          fontSize: 12,
-                          color: HexColor("B8B3B3"),
+                    if (widget.service.requestType != "myself") ...[
+                      ListTile(
+                        leading: Icon(
+                          EvaIcons.personOutline,
+                          color: HexColor('32CD32'),
+                        ),
+                        title: Text(
+                          'Name of Service Recipient (Requested for someone)',
+                          style: GoogleFonts.oxygen(
+                            fontSize: 12,
+                            color: HexColor("B8B3B3"),
+                          ),
+                        ),
+                        subtitle: Text(
+                          widget.service.requester != null &&
+                                  widget.service.requester.isNotEmpty
+                              ? widget.service.requester
+                              : "N/A",
+                          style: GoogleFonts.oxygen(
+                            fontSize: 14,
+                            color: HexColor("44493D"),
+                          ),
                         ),
                       ),
-                      subtitle: Text(
-                        'Angelo Sacramento',
-                        style: GoogleFonts.oxygen(
-                          fontSize: 14,
-                          color: HexColor("44493D"),
-                        ),
-                      ),
-                    ),
+                    ],
                     //service recipient contact
                     ListTile(
                       leading: Icon(
@@ -288,7 +301,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                         ),
                       ),
                       subtitle: Text(
-                        '0244607607',
+                        widget.service.contactOfPerson,
                         style: GoogleFonts.oxygen(
                           fontSize: 14,
                           color: HexColor("44493D"),
@@ -325,7 +338,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                         ),
                       ),
                       subtitle: Text(
-                        'Dansoman, Police Station',
+                        widget.service.location,
                         style: GoogleFonts.oxygen(
                           fontSize: 14,
                           color: HexColor("32CD32"),
@@ -348,20 +361,24 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                       ),
                       subtitle: RichText(
                         text: TextSpan(
-                            text: 'GHc ',
-                            style: GoogleFonts.oxygen(
+                          text: 'GH¢ ',
+                          style: GoogleFonts.oxygen(
+                              fontSize: 14,
+                              color: HexColor("B8B3B3"),
+                              fontWeight: FontWeight.w600),
+                          children: [
+                            TextSpan(
+                              text: Utilities.formatAmounts(
+                                widget.service.feesCharged,
+                              ),
+                              style: GoogleFonts.oxygen(
                                 fontSize: 14,
-                                color: HexColor("B8B3B3"),
-                                fontWeight: FontWeight.w600),
-                            children: [
-                              TextSpan(
-                                text: '180.00',
-                                style: GoogleFonts.oxygen(
-                                    fontSize: 14,
-                                    color: HexColor("32CD32"),
-                                    fontWeight: FontWeight.w600),
-                              )
-                            ]),
+                                color: HexColor("32CD32"),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
 
@@ -375,7 +392,8 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                         ),
                       ),
                       subtitle: Text(
-                        'I need a temporary driver to pick and drop-off my kids at school for the next 2 days. Provider would deploy his own vehicle to execute this service',
+                        widget.service.serviceId.first.description ??
+                            'I need a temporary driver to pick and drop-off my kids at school for the next 2 days. Provider would deploy his own vehicle to execute this service',
                         style: GoogleFonts.oxygen(
                           fontSize: 14,
                           color: HexColor("44493D"),

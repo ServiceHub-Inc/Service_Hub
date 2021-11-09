@@ -26,7 +26,7 @@ class Utilities {
   }
 
   static String newdateFormat(DateTime date) {
-    return DateFormat("yyyy-M-dd").format(date);
+    return DateFormat("yyyy/MM/dd").format(date);
     // return DateFormat.yMMMd().format(_date);
   }
 
@@ -102,6 +102,49 @@ class Utilities {
     var newdata = data.split("/");
     print(newdata);
     return newdata;
+  }
+
+  static String getServiceDisplayImage(String serviceType) {
+    var type = serviceType.toLowerCase().contains("Support")
+        ? 'Support'
+        : serviceType.contains("teach")
+            ? 'Teaching'
+            : serviceType.contains("clean")
+                ? "Cleaning"
+                : serviceType.contains("laundry")
+                    ? "Laundry"
+                    : serviceType.contains("security")
+                        ? "Security"
+                        : serviceType.contains("tutor")
+                            ? "Teaching"
+                            : serviceType.contains("plumb")
+                                ? "Plumbing"
+                                : serviceType.contains("develop")
+                                    ? "Development"
+                                    : "";
+    print(type);
+    switch (type) {
+      case "Support":
+        return "assets/serviceImages/security_banner.jpg";
+        break;
+      case "Teaching":
+        return "assets/serviceImages/Home_tutor.png";
+        break;
+      case "Cleaning":
+        return "assets/serviceImages/cleaner.jpg";
+        break;
+      case "Laundry":
+        return "assets/serviceImages/laundry.jpg";
+        break;
+      case "Security":
+        return "assets/serviceImages/security.jpg";
+        break;
+      case "Plumbing":
+        return "assets/serviceImages/plumber.jpg";
+        break;
+      default:
+        return "assets/serviceImages/plumber.jpg";
+    }
   }
 
   static String currencyImage(String data) {

@@ -13,13 +13,15 @@ class SelectedNetworkImage extends StatelessWidget {
       height: 150,
       width: double.infinity,
       decoration: BoxDecoration(
-          image: DecorationImage(
-              colorFilter: ColorFilter.mode(
-                  Colors.black.withOpacity(0.3), BlendMode.darken),
-              image: AssetImage(
-                imageUrl,
-              ),
-              fit: BoxFit.cover)),
+        image: DecorationImage(
+          colorFilter:
+              ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.darken),
+          image: AssetImage(
+            imageUrl,
+          ),
+          fit: BoxFit.cover,
+        ),
+      ),
       child: Stack(
         children: [
           Positioned(
@@ -28,11 +30,14 @@ class SelectedNetworkImage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(title,
-                    style: GoogleFonts.oxygen(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white))
+                Text(
+                  title,
+                  style: GoogleFonts.oxygen(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                )
               ],
             ),
           )

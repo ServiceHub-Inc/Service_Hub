@@ -53,7 +53,9 @@ class ActiveListItem extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ActiveServiceDetailPage(),
+                      builder: (context) => ActiveServiceDetailPage(
+                        service: service,
+                      ),
                     ),
                   );
                 },
