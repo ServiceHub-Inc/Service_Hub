@@ -55,10 +55,7 @@ class SubmitRequestFormSomeone extends StatelessWidget {
                             ),
 
                             // valueTransformer: (text) => num.tryParse(text),
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(context),
-                              FormBuilderValidators.max(context, 70),
-                            ]),
+                            validator: (value) => "",
                             keyboardType: TextInputType.text,
                             textInputAction: TextInputAction.next,
                           ),
@@ -74,11 +71,7 @@ class SubmitRequestFormSomeone extends StatelessWidget {
                                 )),
 
                             // valueTransformer: (text) => num.tryParse(text),
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(context),
-                              FormBuilderValidators.numeric(context),
-                              FormBuilderValidators.max(context, 10),
-                            ]),
+                            validator: (value) => "",
                             keyboardType: TextInputType.number,
                             textInputAction: TextInputAction.next,
                           ),
@@ -125,10 +118,7 @@ class SubmitRequestFormSomeone extends StatelessWidget {
                             ),
 
                             // valueTransformer: (text) => num.tryParse(text),
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(context),
-                              FormBuilderValidators.max(context, 70),
-                            ]),
+                            validator: (value) => "",
                             keyboardType: TextInputType.text,
                             textInputAction: TextInputAction.next,
                           ),
@@ -151,11 +141,7 @@ class SubmitRequestFormSomeone extends StatelessWidget {
                               ),
                               // onChanged: _onChanged,
                               // valueTransformer: (text) => num.tryParse(text),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                                // FormBuilderValidators.numeric(context),
-                                FormBuilderValidators.max(context, 150),
-                              ]),
+                              validator: (value) => "",
                               keyboardType: TextInputType.text,
                             ),
                           ),
@@ -227,10 +213,7 @@ class SubmitRequestFormSomeone extends StatelessWidget {
                                 ),
 
                                 // valueTransformer: (text) => num.tryParse(text),
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(context),
-                                  FormBuilderValidators.max(context, 70),
-                                ]),
+                                validator: (value) => "",
                                 keyboardType: TextInputType.number,
                                 textInputAction: TextInputAction.next,
                               ),
@@ -284,12 +267,7 @@ class SubmitRequestFormSomeone extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            validator: FormBuilderValidators.equal(
-                              context,
-                              true,
-                              errorText:
-                                  'You must accept terms and conditions to continue',
-                            ),
+                            validator: (value) => "",
                           ),
 
                           // Second  term
@@ -321,12 +299,7 @@ class SubmitRequestFormSomeone extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            validator: FormBuilderValidators.equal(
-                              context,
-                              true,
-                              errorText:
-                                  'You must accept terms and conditions to continue',
-                            ),
+                            validator: (value) => "",
                           ),
 
                           // third term
@@ -358,12 +331,7 @@ class SubmitRequestFormSomeone extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            validator: FormBuilderValidators.equal(
-                              context,
-                              true,
-                              errorText:
-                                  'You must accept terms and conditions to continue',
-                            ),
+                            validator: (value) => "",
                           ),
                         ],
                       ),

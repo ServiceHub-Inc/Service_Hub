@@ -54,11 +54,7 @@ class CorporateExperienceInfoForms extends StatelessWidget {
                         ),
 
                         // valueTransformer: (text) => num.tryParse(text),
-                        validator: FormBuilderValidators.compose([
-                          FormBuilderValidators.required(context),
-                          FormBuilderValidators.numeric(context),
-                          FormBuilderValidators.max(context, 10),
-                        ]),
+                        validator: (value) => "",
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.next,
                       ),
@@ -108,11 +104,7 @@ class CorporateExperienceInfoForms extends StatelessWidget {
                           ),
                           // onChanged: _onChanged,
                           // valueTransformer: (text) => num.tryParse(text),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(context),
-                            // FormBuilderValidators.numeric(context),
-                            FormBuilderValidators.max(context, 150),
-                          ]),
+                          validator: (value) => "",
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.next,
                         ),

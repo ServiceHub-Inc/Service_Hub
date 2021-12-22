@@ -104,11 +104,8 @@ class ProposeNewServicePage extends StatelessWidget {
                                 ),
                                 // onChanged: _onChanged,
                                 // valueTransformer: (text) => num.tryParse(text),
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(context),
-                                  FormBuilderValidators.numeric(context),
-                                  FormBuilderValidators.max(context, 70),
-                                ]),
+                                validator: (value) => "",
+
                                 keyboardType: TextInputType.text,
                               ),
                               SizedBox(
@@ -129,11 +126,8 @@ class ProposeNewServicePage extends StatelessWidget {
                                 ),
                                 // onChanged: _onChanged,
                                 // valueTransformer: (text) => num.tryParse(text),
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(context),
-                                  FormBuilderValidators.numeric(context),
-                                  FormBuilderValidators.max(context, 70),
-                                ]),
+                                validator: (value) => "",
+
                                 keyboardType: TextInputType.text,
                               ),
                               SizedBox(
@@ -154,11 +148,8 @@ class ProposeNewServicePage extends StatelessWidget {
                                 ),
                                 // onChanged: _onChanged,
                                 // valueTransformer: (text) => num.tryParse(text),
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(context),
-                                  FormBuilderValidators.numeric(context),
-                                  FormBuilderValidators.max(context, 70),
-                                ]),
+                                validator: (value) => "",
+
                                 keyboardType: TextInputType.text,
                               ),
                               SizedBox(
@@ -177,8 +168,8 @@ class ProposeNewServicePage extends StatelessWidget {
                                     InputDecoration(border: InputBorder.none),
                                 name: 'question_two',
                                 // onChanged: _onChanged,
-                                validator: FormBuilderValidators.compose(
-                                    [FormBuilderValidators.required(context)]),
+                                validator: (value) => "",
+
                                 options: [
                                   'Yes',
                                   'No',
@@ -216,8 +207,7 @@ class ProposeNewServicePage extends StatelessWidget {
                                         .toggleProposedServiceReferrals(false);
                                   }
                                 },
-                                validator: FormBuilderValidators.compose(
-                                    [FormBuilderValidators.required(context)]),
+                                validator: (value) => "",
                                 options: [
                                   '10 new providers & 50 new requesters',
                                   '20 new providers & 150 new requesters',
@@ -253,11 +243,8 @@ class ProposeNewServicePage extends StatelessWidget {
                                       ),
                                       // onChanged: _onChanged,
                                       // valueTransformer: (text) => num.tryParse(text),
-                                      validator: FormBuilderValidators.compose([
-                                        FormBuilderValidators.required(context),
-                                        FormBuilderValidators.numeric(context),
-                                        FormBuilderValidators.max(context, 70),
-                                      ]),
+                                      validator: (value) => "",
+
                                       keyboardType: TextInputType.text,
                                       maxLines: 3,
                                     ),

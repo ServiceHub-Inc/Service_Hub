@@ -31,10 +31,7 @@ class IndividualInfoForms extends StatelessWidget {
                 ),
 
                 // valueTransformer: (text) => num.tryParse(text),
-                validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.required(context),
-                  FormBuilderValidators.max(context, 70),
-                ]),
+                validator: (value) => "",
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
               ),
@@ -47,10 +44,7 @@ class IndividualInfoForms extends StatelessWidget {
                 ),
 
                 // valueTransformer: (text) => num.tryParse(text),
-                validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.required(context),
-                  FormBuilderValidators.max(context, 70),
-                ]),
+                validator: (value) => "",
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
               ),
@@ -81,10 +75,7 @@ class IndividualInfoForms extends StatelessWidget {
                 ),
 
                 // valueTransformer: (text) => num.tryParse(text),
-                validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.required(context),
-                  FormBuilderValidators.max(context, 70),
-                ]),
+                validator: (value) => "",
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
               ),
@@ -123,10 +114,7 @@ class IndividualInfoForms extends StatelessWidget {
                 ),
 
                 // valueTransformer: (text) => num.tryParse(text),
-                validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.required(context),
-                  FormBuilderValidators.max(context, 70),
-                ]),
+                validator: (value) => "",
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
               ),
@@ -139,8 +127,7 @@ class IndividualInfoForms extends StatelessWidget {
                 ),
                 // initialValue: 'Ecowas Card',
                 allowClear: true,
-                validator: FormBuilderValidators.compose(
-                    [FormBuilderValidators.required(context)]),
+                validator: (value) => "",
                 items: iDTypes
                     .map((iDType) => DropdownMenuItem(
                           value: iDType,
@@ -161,10 +148,7 @@ class IndividualInfoForms extends StatelessWidget {
                 ),
 
                 // valueTransformer: (text) => num.tryParse(text),
-                validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.required(context),
-                  FormBuilderValidators.max(context, 10),
-                ]),
+                validator: (value) => "",
                 keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.next,
               ),
@@ -195,10 +179,7 @@ class IndividualInfoForms extends StatelessWidget {
                     )),
 
                 // valueTransformer: (text) => num.tryParse(text),
-                validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.required(context),
-                  FormBuilderValidators.max(context, 10),
-                ]),
+                validator: (value) => "",
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
               ),

@@ -1,7 +1,6 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -68,17 +67,19 @@ class RateProviderPage extends StatelessWidget {
                       // Rate here
                       Container(
                         width: double.infinity,
-                        child: FormBuilderRating(
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              fillColor: Colors.yellow),
-                          name: 'rate',
-                          filledColor: Colors.yellow,
-                          iconSize: 32.0,
-                          initialValue: 1.0,
-                          max: 5.0,
-                          // onChanged: _onChanged,
-                        ),
+                        child: Text('Rate'),
+                        // child: FormBuilderRating(
+                        //   decoration: InputDecoration(
+                        //     border: InputBorder.none,
+                        //     fillColor: Colors.yellow,
+                        //   ),
+                        //   name: 'rate',
+                        //   filledColor: Colors.yellow,
+                        //   iconSize: 32.0,
+                        //   initialValue: 1.0,
+                        //   max: 5.0,
+                        //   // onChanged: _onChanged,
+                        // ),
                       ),
 
                       //  write a review here
@@ -99,11 +100,8 @@ class RateProviderPage extends StatelessWidget {
                               labelStyle: GoogleFonts.oxygen(fontSize: 12)),
                           // onChanged: _onChanged,
                           // valueTransformer: (text) => num.tryParse(text),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(context),
-                            FormBuilderValidators.numeric(context),
-                            FormBuilderValidators.max(context, 70),
-                          ]),
+                          validator: (value) => "",
+
                           keyboardType: TextInputType.text,
                         ),
                       ),

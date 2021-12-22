@@ -95,16 +95,13 @@ class _PromoteServiceFormPageState extends State<PromoteServiceFormPage> {
                                 AutovalidateMode.onUserInteraction,
                             // onChanged: _onChanged,
                             // valueTransformer: (text) => num.tryParse(text),
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(context),
-                              // FormBuilderValidators.maxLength(context, 10),
-                              (val) {
-                                if (val.split(' ').length > 10) {
-                                  return 'Title must be at most 10 words';
-                                } else
-                                  return null;
-                              }
-                            ]),
+
+                            validator: (val) {
+                              if (val.split(' ').length > 10) {
+                                return 'Title must be at most 10 words';
+                              } else
+                                return null;
+                            },
                             keyboardType: TextInputType.text,
                           ),
                           SizedBox(
@@ -159,11 +156,8 @@ class _PromoteServiceFormPageState extends State<PromoteServiceFormPage> {
                             ),
                             // onChanged: _onChanged,
                             // valueTransformer: (text) => num.tryParse(text),
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(context),
-                              FormBuilderValidators.numeric(context),
-                              FormBuilderValidators.max(context, 70),
-                            ]),
+                            validator: (value) => "",
+
                             keyboardType: TextInputType.text,
                           ),
                           SizedBox(
@@ -182,8 +176,8 @@ class _PromoteServiceFormPageState extends State<PromoteServiceFormPage> {
                                 InputDecoration(border: InputBorder.none),
                             name: 'choose_package',
                             // onChanged: _onChanged,
-                            validator: FormBuilderValidators.compose(
-                                [FormBuilderValidators.required(context)]),
+                            validator: (value) => "",
+
                             options: [
                               'Promote the service for 60 days @GH₵50',
                               'Promote the service for 30 days @GH₵25',

@@ -1,7 +1,6 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -86,10 +85,8 @@ class SubmitRequestFormMyself extends StatelessWidget {
                             ),
 
                             // valueTransformer: (text) => num.tryParse(text),
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(context),
-                              FormBuilderValidators.max(context, 70),
-                            ]),
+                            validator: (value) => "",
+
                             keyboardType: TextInputType.text,
                             textInputAction: TextInputAction.next,
                           ),
@@ -129,11 +126,8 @@ class SubmitRequestFormMyself extends StatelessWidget {
                               ),
                               // onChanged: _onChanged,
                               // valueTransformer: (text) => num.tryParse(text),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                                // FormBuilderValidators.numeric(context),
-                                FormBuilderValidators.max(context, 150),
-                              ]),
+
+                              validator: (value) => "",
                               keyboardType: TextInputType.text,
                             ),
                           ),
@@ -204,10 +198,8 @@ class SubmitRequestFormMyself extends StatelessWidget {
                                 ),
 
                                 // valueTransformer: (text) => num.tryParse(text),
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(context),
-                                  FormBuilderValidators.max(context, 70),
-                                ]),
+
+                                validator: (value) => "",
                                 keyboardType: TextInputType.number,
                                 textInputAction: TextInputAction.next,
                               ),
@@ -261,12 +253,7 @@ class SubmitRequestFormMyself extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            validator: FormBuilderValidators.equal(
-                              context,
-                              true,
-                              errorText:
-                                  'You must accept terms and conditions to continue',
-                            ),
+                            validator: (value) => "",
                           ),
 
                           // Second  term
@@ -298,12 +285,7 @@ class SubmitRequestFormMyself extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            validator: FormBuilderValidators.equal(
-                              context,
-                              true,
-                              errorText:
-                                  'You must accept terms and conditions to continue',
-                            ),
+                            validator: (value) => "",
                           ),
 
                           // third term
@@ -335,12 +317,8 @@ class SubmitRequestFormMyself extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            validator: FormBuilderValidators.equal(
-                              context,
-                              true,
-                              errorText:
-                                  'You must accept terms and conditions to continue',
-                            ),
+
+                            validator: (value) => "",
                           ),
                         ],
                       ),

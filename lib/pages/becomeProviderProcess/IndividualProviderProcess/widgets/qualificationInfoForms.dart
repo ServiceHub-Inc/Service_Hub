@@ -128,8 +128,7 @@ class QualificationInfoForms extends StatelessWidget {
                                   .toggleEnterQualification(false);
                             }
                           },
-                          validator: FormBuilderValidators.compose(
-                              [FormBuilderValidators.required(context)]),
+                          validator: (value) => "",
                           items: qualifications
                               .map((qualifications) => DropdownMenuItem(
                                     value: qualifications,
@@ -160,10 +159,7 @@ class QualificationInfoForms extends StatelessWidget {
                               ),
 
                               // valueTransformer: (text) => num.tryParse(text),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                                FormBuilderValidators.max(context, 150),
-                              ]),
+                              validator: (value) => "",
                               keyboardType: TextInputType.text,
                               textInputAction: TextInputAction.next,
                             ),
@@ -182,11 +178,7 @@ class QualificationInfoForms extends StatelessWidget {
                           ),
 
                           // valueTransformer: (text) => num.tryParse(text),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(context),
-                            FormBuilderValidators.numeric(context),
-                            FormBuilderValidators.max(context, 10),
-                          ]),
+                          validator: (value) => "",
                           keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.next,
                         ),
@@ -236,11 +228,7 @@ class QualificationInfoForms extends StatelessWidget {
                             ),
                             // onChanged: _onChanged,
                             // valueTransformer: (text) => num.tryParse(text),
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(context),
-                              // FormBuilderValidators.numeric(context),
-                              FormBuilderValidators.max(context, 150),
-                            ]),
+                            validator: (value) => "",
                             keyboardType: TextInputType.text,
                             textInputAction: TextInputAction.next,
                           ),

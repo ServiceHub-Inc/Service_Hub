@@ -67,10 +67,8 @@ class PromoteServicePaymentPage extends StatelessWidget {
                             ),
 
                             // valueTransformer: (text) => num.tryParse(text),
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(context),
-                              FormBuilderValidators.max(context, 70),
-                            ]),
+                            validator: (value) => "",
+
                             keyboardType: TextInputType.number,
                             textInputAction: TextInputAction.next,
                           ),

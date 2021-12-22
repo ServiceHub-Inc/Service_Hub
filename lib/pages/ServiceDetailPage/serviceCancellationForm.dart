@@ -95,8 +95,7 @@ class ServiceCancellationFormPage extends StatelessWidget {
                           ),
                           name: 'best_language',
                           // onChanged: _onChanged,
-                          validator: FormBuilderValidators.compose(
-                              [FormBuilderValidators.required(context)]),
+                          validator: (value) => "",
                           options: [
                             'I changed my mind',
                             'I encountered some emergency',
@@ -144,11 +143,7 @@ class ServiceCancellationFormPage extends StatelessWidget {
                             ),
                             // onChanged: _onChanged,
                             // valueTransformer: (text) => num.tryParse(text),
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(context),
-                              FormBuilderValidators.numeric(context),
-                              FormBuilderValidators.max(context, 70),
-                            ]),
+                            validator: (value) => "",
                             keyboardType: TextInputType.text,
                           ),
                         ),
