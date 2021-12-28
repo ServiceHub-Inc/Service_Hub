@@ -3,7 +3,6 @@ import 'package:getwidget/components/avatar/gf_avatar.dart';
 import 'package:getwidget/shape/gf_avatar_shape.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:get/get.dart';
 import 'package:servicehub/pages/ServiceDetailPage/ServiceDetailPage.dart';
 
 class ServicelistItem extends StatelessWidget {

@@ -6,7 +6,6 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:servicehub/controllers/serviceControllers.dart';
 import 'package:servicehub/models/pendingServiceModel.dart';
 import 'package:servicehub/pages/HomePage/widgets/activeServices/ActiveServicesDetailPages/activeServiceDetialPage/activeServiceDetailPage.dart';
-import 'package:servicehub/pages/HomePage/widgets/activeServices/activeServices.dart';
 import 'package:servicehub/pages/ServicesListPage/widgets/searchbar.dart';
 
 class AllActiveServiceListItem extends StatefulWidget {

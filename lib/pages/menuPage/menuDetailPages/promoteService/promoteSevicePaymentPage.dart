@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -17,7 +16,6 @@ class PromoteServicePaymentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormBuilderState>();
 
-    var data = Get.arguments;
     // alert style
     var alertStyle = AlertStyle(
         isOverlayTapDismiss: false,

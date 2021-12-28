@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:servicehub/pages/HomePage/splashScreen.dart';
-import 'package:servicehub/pages/MessagesPage/chat_ui.dart';
 import 'package:servicehub/provider/globals.dart';
 import 'package:servicehub/provider/themes.dart';
 import 'package:servicehub/utils/serviceLocator.dart';
@@ -37,12 +36,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Service Hub',
-      home: ChatPage(),
+      home: Splash(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
-        accentColor: HexColor('32CD32'),
         fontFamily: 'Cantarell',
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)
+            .copyWith(secondary: HexColor('32CD32')),
       ),
     );
   }

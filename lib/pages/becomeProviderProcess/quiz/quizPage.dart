@@ -1,7 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:custom_radio_grouped_button/CustomButtons/ButtonTextStyle.dart';
 import 'package:custom_radio_grouped_button/CustomButtons/CustomRadioButton.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:servicehub/pages/becomeProviderProcess/quiz/quizSuccessPage.dart';

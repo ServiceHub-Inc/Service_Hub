@@ -1,8 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';

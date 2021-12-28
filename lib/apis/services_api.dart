@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-import 'package:servicehub/models/loginModel.dart';
 import 'package:servicehub/models/pendingServiceModel.dart';
+import 'package:servicehub/models/promotedServiceModel.dart';
 import 'package:servicehub/utils/constants.dart';
 
 class ServicesApi {
@@ -44,31 +44,14 @@ class ServicesApi {
     }
   }
 
-  static Future<UserData> signup({
-    String firstName,
-    String lastName,
-    String phone,
-    String email,
-    String password,
-    String confirmPassword,
-    String refCode,
-  }) async {
+  static Future<List<PromotedServiceDatum>> promotedServices() async {
     print("API called");
-    final url = "${Constants.url}/signup";
+    final url = "${Constants.url}/promoted-services";
     print(url);
 
-    final response = await http.post(
+    final response = await http.get(
       Uri.parse(url),
       headers: Constants.header,
-      body: jsonEncode({
-        'firstName': firstName,
-        'lastName': lastName,
-        'phone': phone,
-        'email': email,
-        'password': password,
-        'confirmPassword': confirmPassword,
-        'referralCode': refCode,
-      }),
     );
 
     print("======");
@@ -77,9 +60,10 @@ class ServicesApi {
 
     if (response.statusCode == 200) {
       Map<String, dynamic> result = json.decode(response.body);
-      LoginModel res = loginModelFromJson(response.body.toString());
+      PromotedServiceModel res = promotedServiceModelFromJson(response.body);
 
       if (res.code == "000") {
+        print("00000000");
         return res.data;
       } else {
         throw PlatformException(

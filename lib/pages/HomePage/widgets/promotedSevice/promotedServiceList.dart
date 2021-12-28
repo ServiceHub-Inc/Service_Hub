@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:servicehub/pages/HomePage/controller/promotedServiceController.dart';
+import 'package:servicehub/models/promotedServiceModel.dart';
 import 'package:servicehub/pages/HomePage/widgets/promotedSevice/widget/PromotedServiceListItem.dart';
 
 class PromotedServiceList extends StatelessWidget {
-  // define you popular list controller here
-  final promotedServiceController = Get.put(PromotedServicesController());
+  final List<PromotedServiceDatum> promotedServices;
+
+  PromotedServiceList({Key key, this.promotedServices}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,27 +18,19 @@ class PromotedServiceList extends StatelessWidget {
       child: Obx(() {
         return ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: promotedServiceController.promotedServices.length,
+          itemCount: promotedServices.length,
           itemBuilder: (context, index) {
             return PromotedServiceListItem(
-              imageUrl:
-                  promotedServiceController.promotedServices[index].imageUrl,
-              serviceType:
-                  promotedServiceController.promotedServices[index].serviceType,
-              startDate:
-                  promotedServiceController.promotedServices[index].startDate,
-              endDate:
-                  promotedServiceController.promotedServices[index].endDate,
-              serviceDescription: promotedServiceController
-                  .promotedServices[index].serviceDescription,
-              providerName: promotedServiceController
-                  .promotedServices[index].providerName,
-              providerImageUrl: promotedServiceController
-                  .promotedServices[index].providerImageUrl,
-              providerId:
-                  promotedServiceController.promotedServices[index].providerId,
-              providerRating: promotedServiceController
-                  .promotedServices[index].providerRating,
+              imageUrl: promotedServices[index].banner,
+              serviceType: promotedServices[index].title,
+              startDate: promotedServices[index].promotionStartDate,
+              endDate: promotedServices[index].promotionEndDate,
+              serviceDescription: promotedServices[index].description,
+              providerName: promotedServices[index].providerFirstname +
+                  promotedServices[index].providerLastname,
+              providerImageUrl: promotedServices[index].providerPhoto,
+              providerId: promotedServices[index].providerId,
+              providerRating: 4,
             );
           },
         );

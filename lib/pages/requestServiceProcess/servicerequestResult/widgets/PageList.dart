@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:servicehub/pages/requestServiceProcess/CorporateProviderInfoPage.dart/CorporateProviderInfoPage.dart';
 import 'package:servicehub/pages/requestServiceProcess/IndividualProviderInfoPage.dart/IndividualProviderInfoPage.dart';
 import 'package:servicehub/pages/requestServiceProcess/servicerequestResult/widgets/listItem.dart';
