@@ -4,172 +4,178 @@
 
 import 'dart:convert';
 
-PopularServicesModel popularServicesModelFromJson(String str) => PopularServicesModel.fromJson(json.decode(str));
+PopularServicesModel popularServicesModelFromJson(String str) =>
+    PopularServicesModel.fromJson(json.decode(str));
 
-String popularServicesModelToJson(PopularServicesModel data) => json.encode(data.toJson());
+String popularServicesModelToJson(PopularServicesModel data) =>
+    json.encode(data.toJson());
 
 class PopularServicesModel {
-    PopularServicesModel({
-        this.code,
-        this.message,
-        this.data,
-    });
+  PopularServicesModel({
+    this.code,
+    this.message,
+    this.data,
+  });
 
-    String code;
-    String message;
-    List<Datum> data;
+  String code;
+  String message;
+  List<PopularServiceDatum> data;
 
-    PopularServicesModel copyWith({
-        String code,
-        String message,
-        List<Datum> data,
-    }) => 
-        PopularServicesModel(
-            code: code ?? this.code,
-            message: message ?? this.message,
-            data: data ?? this.data,
-        );
+  PopularServicesModel copyWith({
+    String code,
+    String message,
+    List<PopularServiceDatum> data,
+  }) =>
+      PopularServicesModel(
+        code: code ?? this.code,
+        message: message ?? this.message,
+        data: data ?? this.data,
+      );
 
-    factory PopularServicesModel.fromJson(Map<String, dynamic> json) => PopularServicesModel(
+  factory PopularServicesModel.fromJson(Map<String, dynamic> json) =>
+      PopularServicesModel(
         code: json["code"],
         message: json["message"],
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
-    );
+        data: List<PopularServiceDatum>.from(
+            json["data"].map((x) => PopularServiceDatum.fromJson(x))),
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "code": code,
         "message": message,
         "data": List<dynamic>.from(data.map((x) => x.toJson())),
-    };
+      };
 }
 
-class Datum {
-    Datum({
-        this.id,
-        this.providerId,
-        this.categoryId,
-        this.price,
-        this.discount,
-        this.title,
-        this.description,
-        this.banner,
-        this.attachment,
-        this.createdBy,
-        this.createdAt,
-        this.updatedAt,
-        this.isPromoted,
-        this.promotionDetail,
-        this.promotionServiceFee,
-        this.promotionStartDate,
-        this.promotionStartTime,
-        this.promotionEndDate,
-        this.promotionEndTime,
-        this.promotionAmountPaid,
-        this.promotionServiceBanner,
-        this.promotionCreatedAt,
-        this.promotionUpdatedAt,
-        this.datumCategoryId,
-        this.categoryName,
-        this.categoryDescription,
-        this.providerFirstname,
-        this.providerLastname,
-        this.providerPhoto,
-    });
+class PopularServiceDatum {
+  PopularServiceDatum({
+    this.id,
+    this.providerId,
+    this.categoryId,
+    this.price,
+    this.discount,
+    this.title,
+    this.description,
+    this.banner,
+    this.attachment,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+    this.isPromoted,
+    this.promotionDetail,
+    this.promotionServiceFee,
+    this.promotionStartDate,
+    this.promotionStartTime,
+    this.promotionEndDate,
+    this.promotionEndTime,
+    this.promotionAmountPaid,
+    this.promotionServiceBanner,
+    this.promotionCreatedAt,
+    this.promotionUpdatedAt,
+    this.datumCategoryId,
+    this.categoryName,
+    this.categoryDescription,
+    this.providerFirstname,
+    this.providerLastname,
+    this.providerPhoto,
+  });
 
-    String id;
-    String providerId;
-    String categoryId;
-    String price;
-    String discount;
-    String title;
-    String description;
-    String banner;
-    dynamic attachment;
-    String createdBy;
-    DateTime createdAt;
-    DateTime updatedAt;
-    String isPromoted;
-    String promotionDetail;
-    String promotionServiceFee;
-    String promotionStartDate;
-    String promotionStartTime;
-    String promotionEndDate;
-    String promotionEndTime;
-    String promotionAmountPaid;
-    String promotionServiceBanner;
-    String promotionCreatedAt;
-    String promotionUpdatedAt;
-    String datumCategoryId;
-    String categoryName;
-    String categoryDescription;
-    String providerFirstname;
-    String providerLastname;
-    dynamic providerPhoto;
+  String id;
+  String providerId;
+  String categoryId;
+  String price;
+  String discount;
+  String title;
+  String description;
+  String banner;
+  dynamic attachment;
+  String createdBy;
+  DateTime createdAt;
+  DateTime updatedAt;
+  String isPromoted;
+  String promotionDetail;
+  String promotionServiceFee;
+  String promotionStartDate;
+  String promotionStartTime;
+  String promotionEndDate;
+  String promotionEndTime;
+  String promotionAmountPaid;
+  String promotionServiceBanner;
+  String promotionCreatedAt;
+  String promotionUpdatedAt;
+  String datumCategoryId;
+  String categoryName;
+  String categoryDescription;
+  String providerFirstname;
+  String providerLastname;
+  dynamic providerPhoto;
 
-    Datum copyWith({
-        String id,
-        String providerId,
-        String categoryId,
-        String price,
-        String discount,
-        String title,
-        String description,
-        String banner,
-        dynamic attachment,
-        String createdBy,
-        DateTime createdAt,
-        DateTime updatedAt,
-        String isPromoted,
-        String promotionDetail,
-        String promotionServiceFee,
-        String promotionStartDate,
-        String promotionStartTime,
-        String promotionEndDate,
-        String promotionEndTime,
-        String promotionAmountPaid,
-        String promotionServiceBanner,
-        String promotionCreatedAt,
-        String promotionUpdatedAt,
-        String datumCategoryId,
-        String categoryName,
-        String categoryDescription,
-        String providerFirstname,
-        String providerLastname,
-        dynamic providerPhoto,
-    }) => 
-        Datum(
-            id: id ?? this.id,
-            providerId: providerId ?? this.providerId,
-            categoryId: categoryId ?? this.categoryId,
-            price: price ?? this.price,
-            discount: discount ?? this.discount,
-            title: title ?? this.title,
-            description: description ?? this.description,
-            banner: banner ?? this.banner,
-            attachment: attachment ?? this.attachment,
-            createdBy: createdBy ?? this.createdBy,
-            createdAt: createdAt ?? this.createdAt,
-            updatedAt: updatedAt ?? this.updatedAt,
-            isPromoted: isPromoted ?? this.isPromoted,
-            promotionDetail: promotionDetail ?? this.promotionDetail,
-            promotionServiceFee: promotionServiceFee ?? this.promotionServiceFee,
-            promotionStartDate: promotionStartDate ?? this.promotionStartDate,
-            promotionStartTime: promotionStartTime ?? this.promotionStartTime,
-            promotionEndDate: promotionEndDate ?? this.promotionEndDate,
-            promotionEndTime: promotionEndTime ?? this.promotionEndTime,
-            promotionAmountPaid: promotionAmountPaid ?? this.promotionAmountPaid,
-            promotionServiceBanner: promotionServiceBanner ?? this.promotionServiceBanner,
-            promotionCreatedAt: promotionCreatedAt ?? this.promotionCreatedAt,
-            promotionUpdatedAt: promotionUpdatedAt ?? this.promotionUpdatedAt,
-            datumCategoryId: datumCategoryId ?? this.datumCategoryId,
-            categoryName: categoryName ?? this.categoryName,
-            categoryDescription: categoryDescription ?? this.categoryDescription,
-            providerFirstname: providerFirstname ?? this.providerFirstname,
-            providerLastname: providerLastname ?? this.providerLastname,
-            providerPhoto: providerPhoto ?? this.providerPhoto,
-        );
+  PopularServiceDatum copyWith({
+    String id,
+    String providerId,
+    String categoryId,
+    String price,
+    String discount,
+    String title,
+    String description,
+    String banner,
+    dynamic attachment,
+    String createdBy,
+    DateTime createdAt,
+    DateTime updatedAt,
+    String isPromoted,
+    String promotionDetail,
+    String promotionServiceFee,
+    String promotionStartDate,
+    String promotionStartTime,
+    String promotionEndDate,
+    String promotionEndTime,
+    String promotionAmountPaid,
+    String promotionServiceBanner,
+    String promotionCreatedAt,
+    String promotionUpdatedAt,
+    String datumCategoryId,
+    String categoryName,
+    String categoryDescription,
+    String providerFirstname,
+    String providerLastname,
+    dynamic providerPhoto,
+  }) =>
+      PopularServiceDatum(
+        id: id ?? this.id,
+        providerId: providerId ?? this.providerId,
+        categoryId: categoryId ?? this.categoryId,
+        price: price ?? this.price,
+        discount: discount ?? this.discount,
+        title: title ?? this.title,
+        description: description ?? this.description,
+        banner: banner ?? this.banner,
+        attachment: attachment ?? this.attachment,
+        createdBy: createdBy ?? this.createdBy,
+        createdAt: createdAt ?? this.createdAt,
+        updatedAt: updatedAt ?? this.updatedAt,
+        isPromoted: isPromoted ?? this.isPromoted,
+        promotionDetail: promotionDetail ?? this.promotionDetail,
+        promotionServiceFee: promotionServiceFee ?? this.promotionServiceFee,
+        promotionStartDate: promotionStartDate ?? this.promotionStartDate,
+        promotionStartTime: promotionStartTime ?? this.promotionStartTime,
+        promotionEndDate: promotionEndDate ?? this.promotionEndDate,
+        promotionEndTime: promotionEndTime ?? this.promotionEndTime,
+        promotionAmountPaid: promotionAmountPaid ?? this.promotionAmountPaid,
+        promotionServiceBanner:
+            promotionServiceBanner ?? this.promotionServiceBanner,
+        promotionCreatedAt: promotionCreatedAt ?? this.promotionCreatedAt,
+        promotionUpdatedAt: promotionUpdatedAt ?? this.promotionUpdatedAt,
+        datumCategoryId: datumCategoryId ?? this.datumCategoryId,
+        categoryName: categoryName ?? this.categoryName,
+        categoryDescription: categoryDescription ?? this.categoryDescription,
+        providerFirstname: providerFirstname ?? this.providerFirstname,
+        providerLastname: providerLastname ?? this.providerLastname,
+        providerPhoto: providerPhoto ?? this.providerPhoto,
+      );
 
-    factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory PopularServiceDatum.fromJson(Map<String, dynamic> json) =>
+      PopularServiceDatum(
         id: json["id"],
         providerId: json["provider_id"],
         categoryId: json["category_id"],
@@ -199,9 +205,9 @@ class Datum {
         providerFirstname: json["provider_firstname"],
         providerLastname: json["provider_lastname"],
         providerPhoto: json["provider_photo"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "provider_id": providerId,
         "category_id": categoryId,
@@ -231,5 +237,5 @@ class Datum {
         "provider_firstname": providerFirstname,
         "provider_lastname": providerLastname,
         "provider_photo": providerPhoto,
-    };
+      };
 }

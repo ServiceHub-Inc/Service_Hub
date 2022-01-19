@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:servicehub/apis/services_api.dart';
 import 'package:servicehub/models/categoriesModel.dart';
 import 'package:servicehub/models/pendingServiceModel.dart';
+import 'package:servicehub/models/popularServiceModel.dart';
 import 'package:servicehub/models/promotedServiceModel.dart';
 import 'package:servicehub/provider/globals.dart';
 import 'package:servicehub/utils/internet_check.dart';
@@ -83,6 +84,36 @@ class ServiceController {
       _def.setLoading(true);
       if (checkinternet) {
         var res = await ServicesApi.serviceCategories();
+
+        if (res != null) {
+          print("res is not null");
+          return res;
+        }
+      } else {
+        showNetworkMessage(context, "Please check your internet");
+      }
+    } on PlatformException catch (e) {
+      showErrorMessage(context, e.message ?? "An Error Occured");
+      return null;
+    } on SocketException catch (_) {
+      showErrorMessage(context, "Error connecting to service");
+      return null;
+    } finally {
+      print('finished');
+      _def.setLoading(false);
+    }
+  }
+
+  static Future<List<PopularServiceDatum>> popularServices(
+    BuildContext context,
+  ) async {
+    final _def = Provider.of<Globals>(context, listen: false);
+
+    try {
+      bool checkinternet = await internetCheck();
+      _def.setLoading(true);
+      if (checkinternet) {
+        var res = await ServicesApi.popularServices();
 
         if (res != null) {
           print("res is not null");
