@@ -189,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 }
                 if (snapshot.hasError) {
-                  return Text('Error');
+                  return Text('Errorm;l/.');
                 }
 
                 if (snapshot.connectionState == ConnectionState.done) {
@@ -277,7 +277,7 @@ class _HomePageState extends State<HomePage> {
                   if (promotedServices == null) {
                     return Container();
                   } else {
-                    return PromotedServiceList();
+                    return PromotedServiceList(promotedServices: promotedServices,);
                   }
                 }
                 return null;

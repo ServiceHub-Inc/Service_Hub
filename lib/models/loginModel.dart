@@ -83,7 +83,7 @@ class UserData {
       );
 
   factory UserData.fromJson(Map<String, dynamic> json) => UserData(
-        userId: json["user_id"],
+        userId: json["user_id"].toString(),
         firstName: json["first_name"],
         lastName: json["last_name"],
         phone: json["phone"],
