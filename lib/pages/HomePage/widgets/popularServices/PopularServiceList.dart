@@ -1,36 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:servicehub/pages/ServicesListPage/controller/servicesController.dart';
+import 'package:servicehub/models/popularServiceModel.dart';
 import 'widgets/PopularServiceListItem.dart';
 
 class PopularServiceList extends StatelessWidget {
+  final List<PopularServiceDatum> services;
+
+  const PopularServiceList({Key key, this.services}) : super(key: key);
   // define you popular list controller here
   // final popularServicesController = Get.put(PopularServiceController());
-  final popularServicesController = Get.put(ServicesController());
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
-      width: double.infinity,
-      // make list builder listen to the controller
-      child: Obx(() {
-        return ListView.builder(
+        height: 120,
+        width: double.infinity,
+        // make list builder listen to the controller
+        child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: popularServicesController.services.length,
+          itemCount: services.length ?? 0,
           itemBuilder: (context, index) {
-            return PopularServiceListItem(
-              imageUrl: popularServicesController.services[index].imageUrl,
-              pricerange: popularServicesController.services[index].priceRange
-                  .toString(),
-              serviceTitle:
-                  popularServicesController.services[index].serviceTitle,
-              serviceDescription:
-                  popularServicesController.services[index].serviceDescription,
-            );
+            return PopularServiceListItem(service: services[index]);
           },
-        );
-      }),
-    );
+        ),);
   }
 }

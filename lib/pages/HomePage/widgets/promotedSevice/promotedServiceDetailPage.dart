@@ -3,23 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:servicehub/models/promotedServiceModel.dart';
 import 'package:servicehub/pages/MessagesPage/chatDetailPage.dart';
 import 'package:servicehub/pages/requestServiceProcess/IndividualProviderInfoPage.dart/IndividualProviderInfoPage.dart';
 import 'package:servicehub/utils/callsEmailService.dart';
+import 'package:servicehub/utils/util.dart';
 
 import 'widget/submitRequestBottomSheet.dart';
 
 // ignore: must_be_immutable
 class PromotedServiceDetailPage extends StatelessWidget {
-  final String imageUrl;
-  final String serviceType;
-  final String providerName;
-  final String providerImageUrl;
-  final String providerId;
-  final String providerRating;
-  final String serviceDescription;
-  final String startDate;
-  final String endDate;
+  final PromotedServiceDatum service;
+  
   // alert style
   var alertStyle = AlertStyle(
       isCloseButton: true,
@@ -34,15 +29,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
 
   PromotedServiceDetailPage(
       {Key key,
-      this.imageUrl,
-      this.serviceType,
-      this.providerName,
-      this.providerImageUrl,
-      this.providerId,
-      this.providerRating,
-      this.serviceDescription,
-      this.startDate,
-      this.endDate})
+      this.service})
       : super(key: key);
 
   final UrlLauncherService _service = UrlLauncherService();
@@ -61,7 +48,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
               background: Image.asset(
-                imageUrl,
+                Utilities.getServiceImage(service.banner),
                 fit: BoxFit.cover,
                 colorBlendMode: BlendMode.darken,
                 color: Colors.black.withOpacity(0.7),
@@ -69,7 +56,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
             ),
             elevation: 0,
             title: Text(
-              serviceType,
+              service.title,
               style: GoogleFonts.oxygen(
                 fontSize: 18.5,
                 fontWeight: FontWeight.w600,
@@ -87,7 +74,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        providerName,
+                        "${service.providerFirstname} ${service.providerLastname}",
                         style: GoogleFonts.oxygen(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -99,7 +86,9 @@ class PromotedServiceDetailPage extends StatelessWidget {
                         height: 4,
                       ),
                       CircleAvatar(
-                        backgroundImage: AssetImage(providerImageUrl),
+                        backgroundImage: AssetImage(
+                          // service.providerLastname ??
+                                  "assets/avatar/avatar.jpg",),
                         radius: 24,
                       ),
                       SizedBox(
@@ -116,7 +105,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                             width: 5,
                           ),
                           Text(
-                            providerId.toString(),
+                            service.providerId.toString(),
                             style: GoogleFonts.oxygen(
                               fontSize: 14,
                               color: Colors.amber,
@@ -176,7 +165,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => ChatDetailPage(
-                                    username: providerName,
+                                    username: service.providerFirstname,
                                   ),
                                 ),
                               );
@@ -230,7 +219,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  providerId,
+                  service.providerId,
                   style: GoogleFonts.oxygen(
                     fontSize: 14,
                     color: HexColor('44493D'),
@@ -256,7 +245,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  startDate,
+                  service.promotionStartDate,
                   style: GoogleFonts.oxygen(
                     fontSize: 14,
                     color: HexColor('44493D'),
@@ -282,7 +271,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  endDate,
+                  service.promotionEndDate,
                   style: GoogleFonts.oxygen(
                     fontSize: 14,
                     color: HexColor('44493D'),
@@ -333,7 +322,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                         SizedBox(width: 30.0),
                         Flexible(
                           child: Text(
-                            serviceDescription,
+                            service.description,
                             style: GoogleFonts.oxygen(
                               fontSize: 14,
                               color: HexColor('44493D'),

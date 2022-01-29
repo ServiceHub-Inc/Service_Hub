@@ -25,6 +25,10 @@ class Utilities {
     // return DateFormat.d().add_yMMM().format(date);
   }
 
+  static String getServiceImage(String path) {
+        return "assets/serviceImages/plumber.jpg";
+  }
+
   static String newdateFormat(DateTime date) {
     return DateFormat("yyyy/MM/dd").format(date);
     // return DateFormat.yMMMd().format(_date);

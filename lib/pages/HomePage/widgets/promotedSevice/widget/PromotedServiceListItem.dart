@@ -1,30 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:servicehub/models/promotedServiceModel.dart';
 import 'package:servicehub/pages/HomePage/widgets/promotedSevice/promotedServiceDetailPage.dart';
+import 'package:servicehub/utils/util.dart';
 
 class PromotedServiceListItem extends StatelessWidget {
-  //
-  final String imageUrl;
-  final String serviceType;
-  final String startDate;
-  final String endDate;
-  final String serviceDescription;
-  final String providerName;
-  final String providerImageUrl;
-  final String providerId;
-  final double providerRating;
+  final PromotedServiceDatum service;
 
-  PromotedServiceListItem(
-      {this.imageUrl,
-      this.startDate,
-      this.endDate,
-      this.serviceDescription,
-      this.providerName,
-      this.providerImageUrl,
-      this.serviceType,
-      this.providerId,
-      this.providerRating});
+  PromotedServiceListItem({this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -35,17 +19,7 @@ class PromotedServiceListItem extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => PromotedServiceDetailPage(
-                imageUrl: imageUrl,
-                serviceDescription: serviceDescription,
-                serviceType: serviceType,
-                providerId: providerId,
-                providerImageUrl: providerImageUrl,
-                providerRating: providerRating.toString(),
-                startDate: startDate,
-                endDate: endDate,
-                providerName: providerName,
-              ),
+              builder: (context) => PromotedServiceDetailPage(service: service),
             ),
           );
         },
@@ -87,7 +61,7 @@ class PromotedServiceListItem extends StatelessWidget {
                             color: HexColor('32CD32'),
                           ),
                           child: Text(
-                            serviceType,
+                            service.id,
                             style: GoogleFonts.oxygen(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -104,7 +78,8 @@ class PromotedServiceListItem extends StatelessWidget {
                       topRight: Radius.circular(8),
                     ),
                     image: DecorationImage(
-                      image: AssetImage(imageUrl),
+                      image:
+                          AssetImage(Utilities.getServiceImage(service.banner)),
                       fit: BoxFit.cover,
                       colorFilter: ColorFilter.mode(
                         Colors.black.withOpacity(0.2),
@@ -129,13 +104,14 @@ class PromotedServiceListItem extends StatelessWidget {
                           child: CircleAvatar(
                             radius: 16,
                             backgroundImage: AssetImage(
-                              providerImageUrl,
+                              // service.providerLastname ??
+                                  "assets/avatar/avatar.jpg",
                             ),
                           ),
                         ),
                         SizedBox(width: 10.0),
                         Text(
-                          providerName,
+                          "${service.providerFirstname} ${service.providerLastname}",
                           style: GoogleFonts.oxygen(
                             fontSize: 14.0,
                             fontWeight: FontWeight.w600,
@@ -153,7 +129,7 @@ class PromotedServiceListItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "${providerName.split(' ').first}'s  $serviceType",
+                            service.title,
                             style: GoogleFonts.oxygen(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
@@ -169,7 +145,7 @@ class PromotedServiceListItem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Text(
-                        serviceDescription,
+                        service.description,
                         style: GoogleFonts.oxygen(
                           fontSize: 11,
                           fontWeight: FontWeight.normal,
@@ -195,7 +171,7 @@ class PromotedServiceListItem extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            endDate,
+                            service.promotionEndDate ?? "Tomorrow",
                             style: GoogleFonts.oxygen(
                               fontSize: 12,
                               fontWeight: FontWeight.normal,

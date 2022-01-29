@@ -5,7 +5,6 @@ import 'package:servicehub/models/categoriesModel.dart';
 import 'package:servicehub/models/pendingServiceModel.dart';
 import 'package:servicehub/models/popularServiceModel.dart';
 import 'package:servicehub/models/promotedServiceModel.dart';
-import 'package:servicehub/pages/HomePage/model/popularServiceModel.dart';
 import 'package:servicehub/utils/constants.dart';
 
 class ServicesApi {
@@ -19,7 +18,7 @@ class ServicesApi {
       headers: Constants.header,
     );
 
-    print("======");
+    print("===== pending services =======");
     print(response.body);
     print("======");
 
@@ -57,7 +56,7 @@ class ServicesApi {
       headers: Constants.header,
     );
 
-    print("======");
+    print("===== promoted services =======");
     print(response.body);
     print("======");
 
@@ -95,7 +94,7 @@ class ServicesApi {
       headers: Constants.header,
     );
 
-    print("======");
+    print("===== service categories =======");
     print(response.body);
     print("======");
 
@@ -134,7 +133,7 @@ class ServicesApi {
       headers: Constants.header,
     );
 
-    print("======");
+    print("===== popular services =======");
     print(response.body);
     print("======");
 

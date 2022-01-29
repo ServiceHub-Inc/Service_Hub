@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:servicehub/controllers/serviceControllers.dart';
 import 'package:servicehub/models/pendingServiceModel.dart';
+import 'package:servicehub/models/popularServiceModel.dart';
 import 'package:servicehub/models/promotedServiceModel.dart';
 import 'package:servicehub/pages/HomePage/widgets/InviteOthersLink.dart';
 import 'package:servicehub/pages/HomePage/widgets/activeServices/allActiveServiceList/widgets/allActiveServiceListItem.dart';
@@ -26,12 +27,15 @@ class _HomePageState extends State<HomePage> {
   Future<List<PendingServiceDatum>> getPendingServices;
   List<PromotedServiceDatum> promotedServices;
   Future<List<PromotedServiceDatum>> getPromotedServices;
+  List<PopularServiceDatum> poplularServices;
+  Future<List<PopularServiceDatum>> getPoplularServices;
 
   @override
   initState() {
     super.initState();
     getPendingServices = ServiceController.pendingServices(context);
     getPromotedServices = ServiceController.promotedServices(context);
+    getPoplularServices = ServiceController.popularServices(context);
     // _rebuild();
   }
 
@@ -126,8 +130,37 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // Popular Services here
-            PopularServiceList(),
+            // Popular Services here         
+            FutureBuilder<List<PopularServiceDatum>>(
+              future: getPoplularServices,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.none ||
+                    snapshot.connectionState == ConnectionState.active ||
+                    snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: SpinKitCircle(
+                      color: HexColor('32CD32'),
+                      size: 28,
+                    ),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Text('Errorm;l/.');
+                }
+
+                if (snapshot.connectionState == ConnectionState.done) {
+                  print("done");
+                  poplularServices = snapshot.data;
+
+                  if (poplularServices == null) {
+                    return Container();
+                  } else {
+                    return PopularServiceList(services: poplularServices);
+                  }
+                }
+                return null;
+              },
+            ),
 
             // Popular write ups
             Padding(

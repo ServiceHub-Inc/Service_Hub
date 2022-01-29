@@ -2,18 +2,13 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:servicehub/models/promotedServiceModel.dart';
 
-class ALlPromtedServiceListItem extends StatelessWidget {
-  final String providerImageUrl;
-  final String serviceDescription;
-  final String providerName;
-  final String endDate;
+class AllPromotedServiceListItem extends StatelessWidget {
+  final PromotedServiceDatum service;
 
-  ALlPromtedServiceListItem({
-    this.providerImageUrl,
-    this.providerName,
-    this.serviceDescription,
-    this.endDate,
+  AllPromotedServiceListItem({
+    this.service,
   });
 
   @override
@@ -66,7 +61,9 @@ class ALlPromtedServiceListItem extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 24,
-                    backgroundImage: AssetImage(providerImageUrl),
+                    backgroundImage: AssetImage(
+                      // service.providerLastname ??
+                                  "assets/avatar/avatar.jpg"),
                   ),
                   SizedBox(
                     width: 10,
@@ -76,7 +73,7 @@ class ALlPromtedServiceListItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          providerName,
+                          "${service.providerFirstname} ${service.providerLastname}",
                           style: GoogleFonts.oxygen(
                               fontSize: 16,
                               color: HexColor('5F5F65'),
@@ -85,7 +82,7 @@ class ALlPromtedServiceListItem extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          serviceDescription,
+                          service.description,
                           style: GoogleFonts.oxygen(
                             fontSize: 14,
                             color: HexColor('5F5F65'),
@@ -110,7 +107,7 @@ class ALlPromtedServiceListItem extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 2, horizontal: 8),
-                                child: Text(endDate,
+                                child: Text(service.promotionEndDate,
                                     style: GoogleFonts.oxygen(
                                         fontSize: 12,
                                         color: Colors.white,

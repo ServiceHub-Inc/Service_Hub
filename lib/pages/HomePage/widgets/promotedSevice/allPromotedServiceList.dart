@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:servicehub/pages/HomePage/controller/promotedServiceController.dart';
+import 'package:servicehub/models/promotedServiceModel.dart';
 import 'package:servicehub/pages/HomePage/widgets/promotedSevice/promotedServiceDetailPage.dart';
 import 'package:servicehub/utils/widgets/searchbar.dart';
 
 import 'widget/allpromotedServiceListItem.dart';
 
 class AllPromotedServiceList extends StatelessWidget {
-  final promotedServiceController = Get.put(PromotedServicesController());
+  final List<PromotedServiceDatum> services;
+
+  const AllPromotedServiceList({Key key, this.services}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class AllPromotedServiceList extends StatelessWidget {
           Obx(() {
             return Expanded(
               child: ListView.builder(
-                  itemCount: promotedServiceController.promotedServices.length,
+                  itemCount: services.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
                         onTap: () {
@@ -44,39 +46,13 @@ class AllPromotedServiceList extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => PromotedServiceDetailPage(
-                                imageUrl: promotedServiceController
-                                    .promotedServices[index].imageUrl,
-                                serviceType: promotedServiceController
-                                    .promotedServices[index].serviceType,
-                                startDate: promotedServiceController
-                                    .promotedServices[index].startDate,
-                                endDate: promotedServiceController
-                                    .promotedServices[index].endDate,
-                                serviceDescription: promotedServiceController
-                                    .promotedServices[index].serviceDescription,
-                                providerName: promotedServiceController
-                                    .promotedServices[index].providerName,
-                                providerImageUrl: promotedServiceController
-                                    .promotedServices[index].providerImageUrl,
-                                providerId: promotedServiceController
-                                    .promotedServices[index].providerId,
-                                providerRating: promotedServiceController
-                                    .promotedServices[index].providerRating
-                                    .toString(),
+                                service: services[index],
                               ),
                             ),
                           );
-                          
                         },
-                        child: ALlPromtedServiceListItem(
-                          providerName: promotedServiceController
-                              .promotedServices[index].providerName,
-                          serviceDescription: promotedServiceController
-                              .promotedServices[index].serviceDescription,
-                          endDate: promotedServiceController
-                              .promotedServices[index].endDate,
-                          providerImageUrl: promotedServiceController
-                              .promotedServices[index].providerImageUrl,
+                        child: AllPromotedServiceListItem(
+                          service:services[index]
                         ));
                   }),
             );
