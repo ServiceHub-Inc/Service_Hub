@@ -116,6 +116,7 @@ class ServiceController {
         var res = await ServicesApi.popularServices();
 
         if (res != null) {
+          _def.setServices(res);
           print("res is not null");
           return res;
         }

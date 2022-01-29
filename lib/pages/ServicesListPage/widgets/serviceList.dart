@@ -1,32 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:servicehub/pages/ServicesListPage/controller/servicesController.dart';
+import 'package:provider/provider.dart';
+import 'package:servicehub/models/popularServiceModel.dart';
 import 'package:servicehub/pages/ServicesListPage/widgets/serviceListItem.dart';
+import 'package:servicehub/provider/globals.dart';
+import 'package:servicehub/utils/util.dart';
 
-class ServiceList extends StatelessWidget {
-  // Create Instance of the controller
-  final servicesController = Get.put(ServicesController());
+class ServiceList extends StatefulWidget {
+  @override
+  State<ServiceList> createState() => _ServiceListState();
+}
+
+class _ServiceListState extends State<ServiceList> {
+  List<PopularServiceDatum> services;
+
+  @override
+  void initState() {
+    final _def = Provider.of<Globals>(context, listen: false);
+
+    setState(() {
+      services = _def.getServices;
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
         width: double.infinity,
-        child: Obx(() {
-          return ListView.builder(
-            itemCount: servicesController.services.length,
+        child: ListView.builder(
+            itemCount: services.length,
             itemBuilder: (context, index) {
               return ServicelistItem(
-                imageUrl: servicesController.services[index].imageUrl,
+                imageUrl: Utilities.getServiceImage(services[index].banner),
                 priceRange:
-                    servicesController.services[index].priceRange.toString(),
-                serviceTitle: servicesController.services[index].serviceTitle,
+                    services[index].price.toString(),
+                serviceTitle: services[index].title,
                 serviceDescription:
-                    servicesController.services[index].serviceDescription,
+                    services[index].description
               );
             },
-          );
-        }),
+          
+        ),
       ),
     );
   }

@@ -21,14 +21,9 @@ class LocalStorageService {
   static const String DarkModeKey = 'darkmode';
   static const String LoggedInKey = 'isLoggedIn';
   static const String RememberMe = 'rememberMe';
-  static const String UserSessionTimedOutKey = 'userSessionTimedOut';
   static const String UsernameKey = 'username';
   static const String ProfilePicKey = 'profilePic';
-  static const String FastBalance = 'fastBalance';
-  static const String BioActivated = 'bioLogin';
-  static const String UUID = 'uuid';
-  static const String AppBackground = 'backgroundImage';
-  static const String AppBackgroundChanged = 'backgroundImageChanged';
+  static const String UserData = 'userData';
 
   bool get agreeTNC => _getFromDisk(HasAgreedToTNC) ?? false;
   set agreeTNC(bool value) => _saveToDisk(HasAgreedToTNC, value);
@@ -42,31 +37,11 @@ class LocalStorageService {
   bool get rememberMe => _getFromDisk(RememberMe) ?? false;
   set rememberMe(bool value) => _saveToDisk(RememberMe, value);
 
-  bool get fastBalance => _getFromDisk(FastBalance) ?? false;
-  set fastBalance(bool value) => _saveToDisk(FastBalance, value);
-
-  bool get bioLogin => _getFromDisk(BioActivated) ?? false;
-  set bioLogin(bool value) => _saveToDisk(BioActivated, value);
-
-  bool get backgroundChanged => _getFromDisk(AppBackgroundChanged) ?? false;
-  set backgroundChanged(bool value) => _saveToDisk(AppBackgroundChanged, value);
-
-  bool get userSessionTimedOut => _getFromDisk(UserSessionTimedOutKey) ?? false;
-  set userSessionTimedOut(bool value) =>
-      _saveToDisk(UserSessionTimedOutKey, value);
-
   String get username => _getFromDisk(UsernameKey) ?? '';
   set username(String value) => _saveToDisk(UsernameKey, value);
 
-  String get backgroundImage =>
-      _getFromDisk(AppBackground) ?? "assets/images/bk2.jpg";
-  set backgroundImage(String value) => _saveToDisk(AppBackground, value);
-
-  String get uuid => _getFromDisk(UUID) ?? '';
-  set uuid(String value) => _saveToDisk(UUID, value);
-
-  String get profilePic => _getFromDisk(ProfilePicKey) ?? '';
-  set profilePic(String value) => _saveToDisk(ProfilePicKey, value);
+  List<String> get userData => _preferences.getStringList(UserData);
+  set userData(List<String> data) => _saveToDisk(UserData, data);
 
   void _saveToDisk<T>(String key, T content) {
     print('(TRACE) LocalStorageService:_saveToDisk. key: $key value: $content');

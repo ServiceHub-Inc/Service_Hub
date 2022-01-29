@@ -9,6 +9,27 @@ LoginModel loginModelFromJson(String str) =>
 
 String loginModelToJson(LoginModel data) => json.encode(data.toJson());
 
+List<String> userDataListFromMap(UserData user) {
+  Map<String, dynamic> userMap = user.toJson();
+  return userMap.entries.map((entry) => entry.value.toString()).toList();
+}
+
+UserData userDataFromList(List<String> userDataList) {
+  if (userDataList == null || userDataList.isEmpty) {
+    return null;
+  } else {
+    return UserData(
+      userId: userDataList[0],
+      firstName: userDataList[1],
+      lastName: userDataList[2],
+      phone: userDataList[3],
+      email: userDataList[4],
+      userRole: userDataList[5],
+      photo: userDataList[6]);
+  }
+  
+}
+
 class LoginModel {
   LoginModel({
     this.code,
