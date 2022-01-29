@@ -20,6 +20,7 @@ class LocalStorageService {
   static const String HasAgreedToTNC = 'agreeTNC';
   static const String DarkModeKey = 'darkmode';
   static const String LoggedInKey = 'isLoggedIn';
+  static const String RememberMe = 'rememberMe';
   static const String UserSessionTimedOutKey = 'userSessionTimedOut';
   static const String UsernameKey = 'username';
   static const String ProfilePicKey = 'profilePic';
@@ -37,6 +38,9 @@ class LocalStorageService {
 
   bool get isLoggedIn => _getFromDisk(LoggedInKey) ?? false;
   set isLoggedIn(bool value) => _saveToDisk(LoggedInKey, value);
+
+  bool get rememberMe => _getFromDisk(RememberMe) ?? false;
+  set rememberMe(bool value) => _saveToDisk(RememberMe, value);
 
   bool get fastBalance => _getFromDisk(FastBalance) ?? false;
   set fastBalance(bool value) => _saveToDisk(FastBalance, value);

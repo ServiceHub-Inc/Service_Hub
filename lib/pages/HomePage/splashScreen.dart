@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:servicehub/pages/HomePage/IntroSliderScreen.dart';
+import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
+import 'package:servicehub/pages/SignIn/signIn.dart';
 import 'package:servicehub/utils/localStorage.dart';
 import 'package:servicehub/utils/serviceLocator.dart';
 
@@ -32,14 +34,34 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
     logoAnimation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         // logoController.repeat();
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => IntroSliderScreen(),
-          ),
-        );
+
+        if(storageService.username.isNotEmpty) {
+          if (storageService.rememberMe || storageService.isLoggedIn) {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MyBottomNaigationBar(),
+              ),
+              (route) => false,
+            );
+          } else {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SignInPage(),
+              ),
+            );
+          } 
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => IntroSliderScreen(),
+            ),
+          );
+        }
       }
-    });
+    },);
   }
 
   @override

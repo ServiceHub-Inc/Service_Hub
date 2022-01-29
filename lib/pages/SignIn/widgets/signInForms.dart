@@ -6,6 +6,8 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:servicehub/controllers/authController.dart';
 import 'package:servicehub/provider/globals.dart';
+import 'package:servicehub/utils/localStorage.dart';
+import 'package:servicehub/utils/serviceLocator.dart';
 import 'package:servicehub/utils/widgets/errorWidget.dart';
 
 class SignInForms extends StatefulWidget {
@@ -14,10 +16,19 @@ class SignInForms extends StatefulWidget {
 }
 
 class _SignInFormsState extends State<SignInForms> {
-  final TextEditingController email = TextEditingController();
-  final TextEditingController password = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
 
   bool _showPassword = false;
+  LocalStorageService storageService = locator<LocalStorageService>();
+
+  @override
+  void initState() {
+    if (storageService.username != null && storageService.username.isNotEmpty) {
+      email = TextEditingController(text: storageService.username);
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

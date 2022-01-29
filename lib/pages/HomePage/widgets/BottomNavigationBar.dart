@@ -33,30 +33,7 @@ class _MyBottomNaigationBarState extends State<MyBottomNaigationBar> {
       onWillPop: () async => false,
       child: Scaffold(
         body: _children[_currentIndex],
-        // bottomNavigationBar: BottomNavigationBar(
-        //   selectedItemColor: HexColor('32CD32'),
-        //   unselectedItemColor: Colors.grey[500],
-        //   currentIndex: _currentIndex,
-        //   onTap: _onTappedBar,
-        //   showUnselectedLabels: false,
-        //   showSelectedLabels: false,
-        //   elevation: 0,
-        //   iconSize: 20,
-        //   items: [
-        //     BottomNavigationBarItem(
-        //       icon: Icon(EvaIcons.home),
-        //       label: 'Home',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(EvaIcons.briefcase),
-        //       label: 'Services',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(EvaIcons.messageCircle),
-        //       label: 'Messages',
-        //     )
-        //   ],
-        // )
+
         bottomNavigationBar: FlashyTabBar(
           selectedIndex: _currentIndex,
           showElevation: true,

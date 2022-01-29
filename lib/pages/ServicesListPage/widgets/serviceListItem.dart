@@ -38,7 +38,7 @@ class ServicelistItem extends StatelessWidget {
           },
           leading: GFAvatar(
               radius: 30,
-              backgroundImage: AssetImage(imageUrl),
+              backgroundImage: AssetImage("assets/avatar/avatar.jpg"),
               shape: GFAvatarShape.standard),
           title: Text(serviceTitle,
               style: GoogleFonts.oxygen(
