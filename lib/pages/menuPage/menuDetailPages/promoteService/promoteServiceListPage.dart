@@ -74,7 +74,7 @@ class _PromoteServiceListState extends State<PromoteServiceList> {
                   itemCount: services.length,
                   itemBuilder: (context, index) {
                     return PromotedServiceListItem(
-                      imageUrl: Utilities.getServiceImage(services[index].banner),
+                      imageUrl: Utilities.getServiceDisplayImage(services[index].title),
                       serviceTitle: services[index].title,
                     );
                   },

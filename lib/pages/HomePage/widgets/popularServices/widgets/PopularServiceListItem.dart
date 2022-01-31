@@ -30,7 +30,7 @@ class PopularServiceListItem extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
-                image: AssetImage(Utilities.getServiceImage(service.banner)),
+                image: AssetImage(Utilities.getServiceDisplayImage(service.title)),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.4), BlendMode.darken)),

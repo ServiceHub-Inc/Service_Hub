@@ -133,6 +133,12 @@ class Utilities {
         ? 'Support'
         : serviceType.contains("teach")
             ? 'Teaching'
+            : serviceType.contains("i.t")
+            ? 'Support'
+            : serviceType.contains("home")
+            ? 'Cleaning'
+            : serviceType.contains("wash")
+            ? 'Laundry'
             : serviceType.contains("clean")
                 ? "Cleaning"
                 : serviceType.contains("laundry")

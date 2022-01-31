@@ -113,7 +113,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                           return SizedBox(
                             width: _width * 0.65,
                             child: TextMessageWidget(
-                              forUser: chat.fromUser,
+                              forUser: chat.fromUser ?? false,
                               text: chat.messageText,
                               time: chat.createdAt,
                             ),

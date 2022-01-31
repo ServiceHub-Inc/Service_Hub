@@ -61,7 +61,7 @@ class PromotedServiceListItem extends StatelessWidget {
                             color: HexColor('32CD32'),
                           ),
                           child: Text(
-                            service.id,
+                            service.title.split(" ").first,
                             style: GoogleFonts.oxygen(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -79,7 +79,7 @@ class PromotedServiceListItem extends StatelessWidget {
                     ),
                     image: DecorationImage(
                       image:
-                          AssetImage(Utilities.getServiceImage(service.banner)),
+                          AssetImage(Utilities.getServiceDisplayImage(service.title)),
                       fit: BoxFit.cover,
                       colorFilter: ColorFilter.mode(
                         Colors.black.withOpacity(0.2),

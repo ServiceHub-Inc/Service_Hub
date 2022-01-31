@@ -43,7 +43,7 @@ class ServiceDetailPage extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
               background: Image.asset(
-                Utilities.getServiceImage(service.banner),
+                Utilities.getServiceDisplayImage(service.title),
                 fit: BoxFit.cover,
                 colorBlendMode: BlendMode.darken,
                 color: Colors.black.withOpacity(0.7),
