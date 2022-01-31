@@ -21,12 +21,14 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   final UrlLauncherService _service = UrlLauncherService();
 
   final TextEditingController _controller = TextEditingController();
+  
   final FocusNode _focusNode = FocusNode();
   bool textEntered = false;
   String avatarText = 'AG';
 
   @override
   void initState() {
+    ;
     _focusNode.addListener(() {
       if (_focusNode.hasFocus && _controller.text.isNotEmpty) {
         setState(() {

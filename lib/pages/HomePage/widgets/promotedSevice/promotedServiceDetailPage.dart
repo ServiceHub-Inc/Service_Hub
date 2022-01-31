@@ -245,7 +245,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  service.promotionStartDate,
+                  service.promotionStartDate ?? "Today",
                   style: GoogleFonts.oxygen(
                     fontSize: 14,
                     color: HexColor('44493D'),
@@ -271,7 +271,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  service.promotionEndDate,
+                  service.promotionEndDate ?? "Today",
                   style: GoogleFonts.oxygen(
                     fontSize: 14,
                     color: HexColor('44493D'),

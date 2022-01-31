@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class Constants {
   static const appName = "ServiceHub";
@@ -6,7 +7,7 @@ class Constants {
 
   //UI constants
 
-  static Color mainColor = Color(0XFF1786b5);
+  static Color mainColor = HexColor('32CD32');
   static Color secondaryColor = Color(0XFF867851);
   static int kPinLength = 4;
   static String kBackgroundImage = "assets/images/bk2.jpg";

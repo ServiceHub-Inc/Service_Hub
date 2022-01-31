@@ -3,19 +3,13 @@ import 'package:getwidget/components/avatar/gf_avatar.dart';
 import 'package:getwidget/shape/gf_avatar_shape.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:servicehub/models/popularServiceModel.dart';
 import 'package:servicehub/pages/ServiceDetailPage/ServiceDetailPage.dart';
 
 class ServicelistItem extends StatelessWidget {
-  final String imageUrl;
-  final String serviceTitle;
-  final String priceRange;
-  final String serviceDescription;
+  final PopularServiceDatum service;
 
-  ServicelistItem(
-      {this.imageUrl,
-      this.priceRange,
-      this.serviceDescription,
-      this.serviceTitle});
+  ServicelistItem({this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +23,7 @@ class ServicelistItem extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => ServiceDetailPage(
-                  image: imageUrl,
-                  title: serviceTitle,
-                  description: serviceDescription,
+                  service: service,
                 ),
               ),
             );
@@ -40,7 +32,7 @@ class ServicelistItem extends StatelessWidget {
               radius: 30,
               backgroundImage: AssetImage("assets/avatar/avatar.jpg"),
               shape: GFAvatarShape.standard),
-          title: Text(serviceTitle,
+          title: Text(service.title,
               style: GoogleFonts.oxygen(
                   fontSize: 14,
                   color: HexColor('44493D'),
@@ -56,7 +48,7 @@ class ServicelistItem extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                '¢$priceRange',
+                '¢${service.price}',
                 style: GoogleFonts.oxygen(
                   fontSize: 12,
                   color: HexColor('32CD32'),

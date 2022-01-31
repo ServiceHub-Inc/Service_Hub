@@ -13,6 +13,7 @@ import 'package:servicehub/pages/HomePage/widgets/popularServices/PopularService
 import 'package:servicehub/pages/HomePage/widgets/popularServices/allPopularService/allPopularServiceList.dart';
 import 'package:servicehub/pages/HomePage/widgets/promotedSevice/allPromotedServiceList.dart';
 import 'package:servicehub/pages/menuPage/menuDetailPages/userProfileDetailPage.dart';
+import 'package:servicehub/utils/widgets/shimmerLoader.dart';
 import '../HomePage/widgets/notificationIcon.dart';
 import 'widgets/activeServices/activeServices.dart';
 import 'widgets/promotedSevice/promotedServiceList.dart';
@@ -114,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AllPopularServiceList(),
+                              builder: (context) => AllPopularServiceList(services: poplularServices,),
                             ),
                           );
                         },
@@ -137,15 +138,15 @@ class _HomePageState extends State<HomePage> {
                 if (snapshot.connectionState == ConnectionState.none ||
                     snapshot.connectionState == ConnectionState.active ||
                     snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: SpinKitCircle(
-                      color: HexColor('32CD32'),
-                      size: 28,
+                  return Container(
+                    height: 125,
+                    child: Center(
+                      child: ActiveShimmer(),
                     ),
                   );
                 }
                 if (snapshot.hasError) {
-                  return Text('Errorm;l/.');
+                  return Text('Error.');
                 }
 
                 if (snapshot.connectionState == ConnectionState.done) {
@@ -191,7 +192,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AllActiveServiceListItem(),
+                              builder: (context) => AllActiveServiceListItem(pendingServices: pendingServices,),
                             ),
                           );
                         },
@@ -214,15 +215,15 @@ class _HomePageState extends State<HomePage> {
                 if (snapshot.connectionState == ConnectionState.none ||
                     snapshot.connectionState == ConnectionState.active ||
                     snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: SpinKitCircle(
-                      color: HexColor('32CD32'),
-                      size: 28,
+                  return Container(
+                    height: 125,
+                    child: Center(
+                      child: ActiveShimmer(),
                     ),
                   );
                 }
                 if (snapshot.hasError) {
-                  return Text('Errorm;l/.');
+                  return Text('Error');
                 }
 
                 if (snapshot.connectionState == ConnectionState.done) {
@@ -269,7 +270,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AllPromotedServiceList(),
+                              builder: (context) => AllPromotedServiceList(services: promotedServices,),
                             ),
                           );
                         },
@@ -292,10 +293,10 @@ class _HomePageState extends State<HomePage> {
                 if (snapshot.connectionState == ConnectionState.none ||
                     snapshot.connectionState == ConnectionState.active ||
                     snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: SpinKitCircle(
-                      color: HexColor('32CD32'),
-                      size: 28,
+                  return Container(
+                    height: 220,
+                    child: Center(
+                      child: PromotedShimmer(),
                     ),
                   );
                 }

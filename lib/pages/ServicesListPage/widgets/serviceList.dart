@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:servicehub/models/popularServiceModel.dart';
 import 'package:servicehub/pages/ServicesListPage/widgets/serviceListItem.dart';
 import 'package:servicehub/provider/globals.dart';
-import 'package:servicehub/utils/util.dart';
 
 class ServiceList extends StatefulWidget {
   @override
@@ -32,12 +31,7 @@ class _ServiceListState extends State<ServiceList> {
             itemCount: services.length,
             itemBuilder: (context, index) {
               return ServicelistItem(
-                imageUrl: Utilities.getServiceImage(services[index].banner),
-                priceRange:
-                    services[index].price.toString(),
-                serviceTitle: services[index].title,
-                serviceDescription:
-                    services[index].description
+                service: services[index],
               );
             },
           

@@ -9,7 +9,8 @@ import 'package:servicehub/pages/HomePage/widgets/activeServices/ActiveServicesD
 import 'package:servicehub/pages/ServicesListPage/widgets/searchbar.dart';
 
 class AllActiveServiceListItem extends StatefulWidget {
-  const AllActiveServiceListItem({Key key}) : super(key: key);
+  final List<PendingServiceDatum> pendingServices;
+  const AllActiveServiceListItem({Key key, this.pendingServices}) : super(key: key);
 
   @override
   _AllActiveServiceListItemState createState() =>
@@ -17,16 +18,7 @@ class AllActiveServiceListItem extends StatefulWidget {
 }
 
 class _AllActiveServiceListItemState extends State<AllActiveServiceListItem> {
-  List<PendingServiceDatum> pendingServices;
-  Future<List<PendingServiceDatum>> getPendingServices;
-
-  @override
-  initState() {
-    super.initState();
-    getPendingServices = ServiceController.pendingServices(context);
-    // _rebuild();
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,41 +42,14 @@ class _AllActiveServiceListItemState extends State<AllActiveServiceListItem> {
             child: SearchBar(),
           ),
           Expanded(
-            child: FutureBuilder<List<PendingServiceDatum>>(
-              future: getPendingServices,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.none ||
-                    snapshot.connectionState == ConnectionState.active ||
-                    snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: SpinKitCircle(
-                      color: HexColor('32CD32'),
-                      size: 28,
-                    ),
-                  );
-                }
-                if (snapshot.hasError) {
-                  return Text('Error');
-                }
-
-                if (snapshot.connectionState == ConnectionState.done) {
-                  print("done");
-                  pendingServices = snapshot.data;
-
-                  if (pendingServices == null) {
-                    return Container();
-                  } else {
-                    return ListView.builder(itemBuilder: (context, index) {
+            child: ListView.builder(itemCount: widget.pendingServices.length, itemBuilder: (context, index) {
                       return ActiveServiceTile(
-                        service: pendingServices[index],
+                        service: widget.pendingServices[index],
                       );
-                    });
-                  }
-                }
-                return null;
-              },
+                    })
+                 
             ),
-          ),
+          
         ],
       ),
     );

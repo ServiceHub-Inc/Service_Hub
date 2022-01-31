@@ -107,7 +107,7 @@ class AllPromotedServiceListItem extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 2, horizontal: 8),
-                                child: Text(service.promotionEndDate,
+                                child: Text(service.promotionEndDate ?? "Today",
                                     style: GoogleFonts.oxygen(
                                         fontSize: 12,
                                         color: Colors.white,

@@ -35,8 +35,7 @@ class AllPromotedServiceList extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: SearchBar(),
           ),
-          Obx(() {
-            return Expanded(
+          Expanded(
               child: ListView.builder(
                   itemCount: services.length,
                   itemBuilder: (context, index) {
@@ -55,8 +54,8 @@ class AllPromotedServiceList extends StatelessWidget {
                           service:services[index]
                         ));
                   }),
-            );
-          }),
+            
+          ),
         ],
       ),
     );

@@ -17,9 +17,7 @@ class PopularServiceListItem extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => ServiceDetailPage(
-              image: Utilities.getServiceImage(service.banner),
-              title: service.title,
-              description: service.description,
+              service:service
             ),
           ),
         );

@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:servicehub/models/popularServiceModel.dart';
 import 'package:servicehub/pages/ServiceDetailPage/ServiceDetailPage.dart';
+import 'package:servicehub/utils/util.dart';
 
 class AllPopularServiceListItem extends StatelessWidget {
-  final String imageUrl;
-  final String serviceTitle;
-  final String priceRange;
-  final String serviceDescription;
+  final PopularServiceDatum service;
 
-  AllPopularServiceListItem(
-      {this.imageUrl,
-      this.serviceTitle,
-      this.priceRange,
-      this.serviceDescription});
+  AllPopularServiceListItem({this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +17,7 @@ class AllPopularServiceListItem extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => ServiceDetailPage(
-              image: imageUrl,
-              title: serviceTitle,
-              description: serviceDescription,
+              service: service,
             ),
           ),
         );
@@ -37,7 +30,7 @@ class AllPopularServiceListItem extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
-                image: AssetImage(imageUrl),
+                image: AssetImage(Utilities.getServiceImage(service.banner)),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.4), BlendMode.darken)),
@@ -53,14 +46,14 @@ class AllPopularServiceListItem extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(serviceTitle,
+                        Text(service.title,
                             style: GoogleFonts.oxygen(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white)),
-                        Text(' From ¢$priceRange',
+                        Text(' From ¢${service.price}',
                             style: GoogleFonts.oxygen(
-                                fontSize: 14, color: Colors.white)),
+                                fontSize: 14, color: Colors.white,),),
                       ],
                     ),
                   ],
