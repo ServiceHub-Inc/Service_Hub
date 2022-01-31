@@ -24,22 +24,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
   final UrlLauncherService _service = UrlLauncherService();
   @override
   Widget build(BuildContext context) {
-    // alert stlying
-    var alertStyle = AlertStyle(
-      isCloseButton: false,
-      isOverlayTapDismiss: false,
-      descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('5F5F65')),
-      descTextAlign: TextAlign.center,
-      animationDuration: Duration(milliseconds: 400),
-      alertBorder: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      titleStyle: TextStyle(
-          fontSize: 20, color: HexColor('32CD32'), fontWeight: FontWeight.w600),
-      alertAlignment: Alignment.centerRight,
-    );
-
-    // form builder key
+       // form builder key
     // final _formKey = GlobalKey<FormBuilderState>();
     // screen width
     final width = MediaQuery.of(context).size.width;
@@ -130,7 +115,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                         // call button
                         Chip(
                           backgroundColor: HexColor('32CD32').withOpacity(0.3),
-                          label: GestureDetector(
+                          label: InkWell(
                             onTap: () {
                               print('calling');
                               _service.call(widget.service.contactOfPerson);
@@ -145,7 +130,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                                     size: 20,
                                   ),
                                   SizedBox(
-                                    width: 10,
+                                    width: 15,
                                   ),
                                   Text(
                                     'Call',
@@ -460,24 +445,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                                 // end service alert
                                 Alert(
                                   context: context,
-                                  style: AlertStyle(
-                                    isCloseButton: false,
-                                    isOverlayTapDismiss: false,
-                                    descStyle: GoogleFonts.oxygen(
-                                        fontSize: 14,
-                                        color: HexColor('5F5F65')),
-                                    descTextAlign: TextAlign.center,
-                                    animationDuration:
-                                        Duration(milliseconds: 400),
-                                    alertBorder: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                    titleStyle: TextStyle(
-                                        fontSize: 20,
-                                        color: HexColor('32CD32'),
-                                        fontWeight: FontWeight.w600),
-                                    alertAlignment: Alignment.centerRight,
-                                  ),
+                                  style: Utilities.alertStyle(),
                                   // image:
                                   //     Image.asset("assets/quizLogo/check.png"),
                                   title: "SERVICE STATUS",
@@ -510,7 +478,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                                         Navigator.pop(context);
                                         Alert(
                                           context: context,
-                                          style: alertStyle,
+                                          style: Utilities.alertStyle(),
                                           image: Image.asset(
                                               "assets/quizLogo/check.png"),
                                           title: "SERVICE COMPLETED",
@@ -603,7 +571,7 @@ class _ActiveServiceDetailPageState extends State<ActiveServiceDetailPage> {
                               onPressed: () {
                                 Alert(
                                   context: context,
-                                  style: alertStyle,
+                                  style: Utilities.alertStyle(),
                                   type: AlertType.warning,
                                   title: "CANCEL SERVICE",
                                   desc:

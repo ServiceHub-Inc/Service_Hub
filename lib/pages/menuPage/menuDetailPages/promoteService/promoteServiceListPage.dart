@@ -1,21 +1,35 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:servicehub/pages/ServicesListPage/controller/servicesController.dart';
+import 'package:provider/provider.dart';
+import 'package:servicehub/models/popularServiceModel.dart';
+import 'package:servicehub/provider/globals.dart';
+import 'package:servicehub/utils/util.dart';
 import '../../widgets/promotedServiceListItem.dart';
 
 class PromoteServiceList extends StatefulWidget {
-  const PromoteServiceList({Key key}) : super(key: key);
 
   @override
   _PromoteServiceListState createState() => _PromoteServiceListState();
 }
 
 class _PromoteServiceListState extends State<PromoteServiceList> {
+  List<PopularServiceDatum> services;
+
+  @override
+  void initState() {
+    final _def = Provider.of<Globals>(context, listen: false);
+
+    setState(() {
+      services = _def.getServices;
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: HexColor('32CD32'),
@@ -56,17 +70,16 @@ class _PromoteServiceListState extends State<PromoteServiceList> {
           Expanded(
             child: Container(
               width: double.infinity,
-              child: GetX<ServicesController>(builder: (controller) {
-                return ListView.builder(
-                  itemCount: controller.services.length,
+              child: ListView.builder(
+                  itemCount: services.length,
                   itemBuilder: (context, index) {
                     return PromotedServiceListItem(
-                      imageUrl: controller.services[index].imageUrl,
-                      serviceTitle: controller.services[index].serviceTitle,
+                      imageUrl: Utilities.getServiceImage(services[index].banner),
+                      serviceTitle: services[index].title,
                     );
                   },
-                );
-              }),
+                
+              ),
             ),
           )
         ],

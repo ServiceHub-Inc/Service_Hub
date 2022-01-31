@@ -4,21 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
+import 'package:servicehub/utils/util.dart';
 import 'widgets/selectedNetworkImage.dart';
 
 class PaymentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormBuilderState>();
-    // alert style
-    var alertStyle = AlertStyle(
-        isOverlayTapDismiss: false,
-        isCloseButton: false,
-        descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('44493D')),
-        titleStyle: GoogleFonts.oxygen(
-            fontSize: 16,
-            color: HexColor('32CD32'),
-            fontWeight: FontWeight.w600));
+    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: HexColor('32CD32'),
@@ -78,7 +71,7 @@ class PaymentPage extends StatelessWidget {
                         child: TextButton(
                           onPressed: () {
                             Alert(
-                                style: alertStyle,
+                                style: Utilities.alertStyle(),
                                 context: context,
                                 title: "PAYMENT SUCCESSFUL",
                                 desc:

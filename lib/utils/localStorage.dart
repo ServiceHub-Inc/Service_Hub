@@ -40,8 +40,8 @@ class LocalStorageService {
   String get username => _getFromDisk(UsernameKey) ?? '';
   set username(String value) => _saveToDisk(UsernameKey, value);
 
-  List<String> get userData => _preferences.getStringList(UserData);
-  set userData(List<String> data) => _saveToDisk(UserData, data);
+  String get userData => _getFromDisk(UserData) ?? '';
+  set userData(String data) => _saveToDisk(UserData, data);
 
   void _saveToDisk<T>(String key, T content) {
     print('(TRACE) LocalStorageService:_saveToDisk. key: $key value: $content');

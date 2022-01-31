@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:servicehub/pages/InvoicePage/invoicePage.dart';
+import 'package:servicehub/utils/util.dart';
 
 class AcceptedRequestTile extends StatelessWidget {
   const AcceptedRequestTile({Key key}) : super(key: key);
@@ -12,32 +13,13 @@ class AcceptedRequestTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
-    // alert stlying
-    var alertStyle = AlertStyle(
-      isCloseButton: false,
-      isOverlayTapDismiss: true,
-      descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('5F5F65')),
-      descTextAlign: TextAlign.center,
-      animationDuration: Duration(milliseconds: 400),
-      alertBorder: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.black, width: 1.2),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      titleStyle: TextStyle(
-        fontSize: 17,
-        color: Colors.black,
-        fontWeight: FontWeight.w600,
-      ),
-      alertAlignment: Alignment.centerRight,
-    );
-
     return Padding(
       padding: const EdgeInsets.only(bottom: 2),
       child: GestureDetector(
         onTap: () {
           Alert(
             context: context,
-            style: alertStyle,
+            style: Utilities.alertStyle(),
             // image: Image.asset("assets/quizLogo/check.png"),
             title: "Request Accepted!",
             desc:

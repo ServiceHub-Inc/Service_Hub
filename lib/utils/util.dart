@@ -1,7 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Utilities {
   static String formatAmounts(dynamic amt) {
@@ -106,6 +109,23 @@ class Utilities {
     var newdata = data.split("/");
     print(newdata);
     return newdata;
+  }
+
+  static AlertStyle alertStyle() {
+    return AlertStyle(
+      isCloseButton: false,
+      isOverlayTapDismiss: true,
+      overlayColor: Colors.black.withOpacity(0.55),
+      descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('5F5F65')),
+      descTextAlign: TextAlign.center,
+      animationDuration: Duration(milliseconds: 400),
+      alertBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      titleStyle: TextStyle(
+          fontSize: 20, color: HexColor('32CD32'), fontWeight: FontWeight.w600),
+      alertAlignment: Alignment.centerRight,
+    );
   }
 
   static String getServiceDisplayImage(String serviceType) {

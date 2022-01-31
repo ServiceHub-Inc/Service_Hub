@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:servicehub/models/loginModel.dart';
@@ -6,12 +8,18 @@ import 'package:servicehub/utils/localStorage.dart';
 import 'package:servicehub/utils/serviceLocator.dart';
 
 LocalStorageService storageService = locator<LocalStorageService>();
+
+UserData getUserJson(String data) {
+  return UserData.fromJson(jsonDecode(data));
+}
 class Globals with ChangeNotifier {
-  
+
   bool _isLoading = false;
   bool _hasInternet = false;
   String _profilePic;
-  UserData user = userDataFromList(storageService.userData);
+  UserData user = storageService.userData != ''
+      ? getUserJson(storageService.userData)
+      : null;
   List<PopularServiceDatum> _services = [];
 
   String get getProfilePic => _profilePic;

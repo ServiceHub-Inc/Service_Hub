@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:servicehub/pages/becomeProviderProcess/ProvidedServiceSuccessPage/serviceTerms.dart';
+import 'package:servicehub/utils/util.dart';
 
 class QuizSuccessPageButton extends StatefulWidget {
   // Alert Styling
@@ -11,16 +12,7 @@ class QuizSuccessPageButton extends StatefulWidget {
 }
 
 class _QuizSuccessPageButtonState extends State<QuizSuccessPageButton> {
-  var alertStyle = AlertStyle(
-    descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('44493D')),
-    titleStyle: GoogleFonts.oxygen(
-      fontSize: 20,
-      color: HexColor('32CD32'),
-      fontWeight: FontWeight.w600,
-    ),
-  );
-
-  @override
+    @override
   Widget build(BuildContext context) {
     return Container(
       height: 50,
@@ -28,7 +20,7 @@ class _QuizSuccessPageButtonState extends State<QuizSuccessPageButton> {
       child: TextButton(
         onPressed: () {
           Alert(
-            style: alertStyle,
+            style: Utilities.alertStyle(),
             buttons: [
               DialogButton(
                 color: HexColor('32CD32'),

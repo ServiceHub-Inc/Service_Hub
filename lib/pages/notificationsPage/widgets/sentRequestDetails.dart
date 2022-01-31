@@ -7,27 +7,14 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
 import 'package:servicehub/pages/notificationsPage/notificationpage.dart';
+import 'package:servicehub/utils/constants.dart';
+import 'package:servicehub/utils/util.dart';
 
 class Details extends StatelessWidget {
   const Details({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // alert stlying
-    var alertStyle = AlertStyle(
-      isCloseButton: false,
-      isOverlayTapDismiss: false,
-      descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('5F5F65')),
-      descTextAlign: TextAlign.center,
-      animationDuration: Duration(milliseconds: 400),
-      alertBorder: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      titleStyle: TextStyle(
-          fontSize: 20, color: HexColor('32CD32'), fontWeight: FontWeight.w600),
-      alertAlignment: Alignment.centerRight,
-    );
-
     // screen width
     final width = MediaQuery.of(context).size.width;
 
@@ -214,7 +201,7 @@ class Details extends StatelessWidget {
                           // end service alert
                           Alert(
                             context: context,
-                            style: alertStyle,
+                            style: Utilities.alertStyle(),
                             image: Image.asset("assets/quizLogo/check.png"),
                             title: "SERVICE ACCEPTED",
                             desc:
@@ -260,7 +247,7 @@ class Details extends StatelessWidget {
                         onPressed: () {
                           Alert(
                             context: context,
-                            style: alertStyle,
+                            style: Utilities.alertStyle(),
                             type: AlertType.warning,
                             title: "DECLINE SERVICE",
                             desc: "Are you sure you want Decline this service.",
@@ -273,39 +260,22 @@ class Details extends StatelessWidget {
                                       color: Colors.white, fontSize: 20),
                                 ),
                                 onPressed: () {
-                                  Get.back();
+                                  Navigator.pop(context);
                                 },
                                 width: 120,
                               ),
                               DialogButton(
+                                color: Constants.mainColor,
                                 child: Text(
                                   "YES",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20),
                                 ),
                                 onPressed: () {
-                                  Get.back();
+                                  Navigator.pop(context);
                                   Alert(
                                     context: context,
-                                    style: AlertStyle(
-                                      isCloseButton: false,
-                                      isOverlayTapDismiss: false,
-                                      descStyle: GoogleFonts.oxygen(
-                                          fontSize: 14,
-                                          color: HexColor('5F5F65')),
-                                      descTextAlign: TextAlign.center,
-                                      animationDuration:
-                                          Duration(milliseconds: 400),
-                                      alertBorder: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      titleStyle: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                      alertAlignment: Alignment.centerRight,
-                                    ),
+                                    style: Utilities.alertStyle(),
                                     type: AlertType.none,
                                     title: "Decline Successful !",
                                     desc:

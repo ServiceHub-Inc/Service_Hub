@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
+import 'package:servicehub/utils/util.dart';
 
 class ServiceCancellationFormPage extends StatelessWidget {
   const ServiceCancellationFormPage({Key key}) : super(key: key);
@@ -13,20 +14,6 @@ class ServiceCancellationFormPage extends StatelessWidget {
     // forms key
     GlobalKey<FormBuilderState> _formKey = GlobalKey();
 
-    // alert styling
-    var alertStyle = AlertStyle(
-      isCloseButton: false,
-      isOverlayTapDismiss: false,
-      descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('5F5F65')),
-      descTextAlign: TextAlign.center,
-      animationDuration: Duration(milliseconds: 400),
-      alertBorder: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      titleStyle: TextStyle(
-          fontSize: 20, color: HexColor('32CD32'), fontWeight: FontWeight.w600),
-      alertAlignment: Alignment.centerRight,
-    );
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
@@ -159,7 +146,7 @@ class ServiceCancellationFormPage extends StatelessWidget {
                             onPressed: () {
                               // success alert
                               Alert(
-                                  style: alertStyle,
+                                  style: Utilities.alertStyle(),
                                   context: context,
                                   title: "SUCCESS",
                                   desc:

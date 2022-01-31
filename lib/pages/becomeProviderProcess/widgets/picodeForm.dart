@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:servicehub/pages/becomeProviderProcess/IndividualProviderProcess/personalInfoFormsPage.dart';
 
 class PinCodeForm extends StatefulWidget {
@@ -13,16 +11,7 @@ class PinCodeForm extends StatefulWidget {
 }
 
 class _PinCodeFormState extends State<PinCodeForm> {
-  var alertStyle = AlertStyle(
-      isCloseButton: false,
-      isOverlayTapDismiss: false,
-      descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('44493D')),
-      titleStyle: GoogleFonts.oxygen(
-          fontSize: 16,
-          color: HexColor('32CD32'),
-          fontWeight: FontWeight.w600));
-
-  @override
+    @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40),

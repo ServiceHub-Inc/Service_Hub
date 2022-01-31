@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:servicehub/models/loginModel.dart';
 import 'package:servicehub/provider/globals.dart';
+import 'package:servicehub/utils/util.dart';
 import '../widgets/headerProfile.dart';
 
 class UserProfileDetailPage extends StatelessWidget {
@@ -13,6 +14,34 @@ class UserProfileDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    editEntry(String title, String value, Function onSave) {
+      Alert(
+          context: context,
+          style: Utilities.alertStyle(),
+          title: title,
+          content: Column(
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(
+                  labelText: value,
+                ),
+              ),
+            ],
+          ),
+          buttons: [
+            DialogButton(
+              onPressed: () {
+                Navigator.pop(context);
+                onSave();
+              },
+              child: Text(
+                "Save",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            )
+          ]).show();
+    }
+
     UserData user;
     final _globals = Provider.of<Globals>(context);
     user = _globals.getUser;
@@ -55,30 +84,7 @@ class UserProfileDetailPage extends StatelessWidget {
                             EvaIcons.edit2Outline,
                             color: HexColor("32CD32"),
                           ),
-                          onPressed: () {
-                            Alert(
-                                context: context,
-                                title: "First Name",
-                                content: Column(
-                                  children: <Widget>[
-                                    TextField(
-                                      decoration: InputDecoration(
-                                        labelText: user.firstName,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                buttons: [
-                                  DialogButton(
-                                    onPressed: () => Navigator.pop(context),
-                                    child: Text(
-                                      "Save",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    ),
-                                  )
-                                ]).show();
-                          })),
+                          onPressed: () => editEntry("First Name", user.firstName, () {},),),),
 
                   // Last Name
                   ListTile(
@@ -101,7 +107,7 @@ class UserProfileDetailPage extends StatelessWidget {
                             EvaIcons.edit2Outline,
                             color: HexColor("32CD32"),
                           ),
-                          onPressed: () {})),
+                          onPressed: () => editEntry("Last Name", user.lastName, () {},),),),
 
                   // Verification status
                   ListTile(
@@ -147,7 +153,7 @@ class UserProfileDetailPage extends StatelessWidget {
                             EvaIcons.edit2Outline,
                             color: HexColor("32CD32"),
                           ),
-                          onPressed: () {})),
+                          onPressed: () => editEntry("Email", user.email, () {},),),),
 
                   // Telephone Number
                   ListTile(
@@ -170,7 +176,7 @@ class UserProfileDetailPage extends StatelessWidget {
                             EvaIcons.edit2Outline,
                             color: HexColor("32CD32"),
                           ),
-                          onPressed: () {})),
+                          onPressed: () => editEntry("Telephone Number", user.phone, () {},),),),
 
                   // Telephone Number
                   ListTile(
@@ -190,10 +196,11 @@ class UserProfileDetailPage extends StatelessWidget {
                       ),
                       trailing: IconButton(
                           icon: Icon(
-                            EvaIcons.edit2Outline,
+                            EvaIcons.checkmarkCircle2Outline,
                             color: HexColor("32CD32"),
                           ),
-                          onPressed: () {})),
+                          onPressed: () {},
+                      ),)
                 ],
               ),
             ),

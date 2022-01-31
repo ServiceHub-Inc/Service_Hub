@@ -206,25 +206,7 @@ class _PromoteServiceFormPageState extends State<PromoteServiceFormPage> {
                                     builder: (context) => UploadBannerPage(),
                                   ),
                                 );
-                                // success alert
-                                // Alert(
-                                //   style: alertStyle,
-                                //   context: context,
-                                //   title: "SUCCESS",
-                                //   desc: "Thank you for proposing a new service for this platform. If it meets our requirements, our team will contact you",
-                                //   image: Image.asset("assets/quizLogo/check.png"),
-                                //   buttons: [
-                                //    DialogButton(
-                                //         onPressed: (){
-                                //           Get.offAllNamed('/MyBottomNavigationBar');
-                                //         },
-                                //         child: Text(
-                                //           "Ok",
-                                //           style: TextStyle(color: Colors.white, fontSize: 20),
-                                //         ),
-                                //       )
-                                //   ]
-                                // ).show();
+                                
                               },
                               child: Text('NEXT',
                                   style: GoogleFonts.oxygen(

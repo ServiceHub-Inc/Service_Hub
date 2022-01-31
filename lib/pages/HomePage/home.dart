@@ -31,6 +31,8 @@ class _HomePageState extends State<HomePage> {
   List<PopularServiceDatum> poplularServices;
   Future<List<PopularServiceDatum>> getPoplularServices;
 
+  int pendingServiceCount;
+
   @override
   initState() {
     super.initState();
@@ -115,7 +117,9 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AllPopularServiceList(services: poplularServices,),
+                              builder: (context) => AllPopularServiceList(
+                                services: poplularServices,
+                              ),
                             ),
                           );
                         },
@@ -131,7 +135,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // Popular Services here         
+            // Popular Services here
             FutureBuilder<List<PopularServiceDatum>>(
               future: getPoplularServices,
               builder: (context, snapshot) {
@@ -179,7 +183,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         width: width * 0.4,
                         child: AutoSizeText(
-                          'Pending Service (3)',
+                          "Pending Service ${pendingServiceCount != null ? '($pendingServiceCount)' : ''}",
                           style: GoogleFonts.oxygen(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -192,7 +196,9 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AllActiveServiceListItem(pendingServices: pendingServices,),
+                              builder: (context) => AllActiveServiceListItem(
+                                pendingServices: pendingServices,
+                              ),
                             ),
                           );
                         },
@@ -233,6 +239,8 @@ class _HomePageState extends State<HomePage> {
                   if (pendingServices == null) {
                     return Container();
                   } else {
+                    pendingServiceCount = snapshot.data.length;
+                    
                     return ActiveServices(services: snapshot.data);
                   }
                 }
@@ -270,7 +278,9 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AllPromotedServiceList(services: promotedServices,),
+                              builder: (context) => AllPromotedServiceList(
+                                services: promotedServices,
+                              ),
                             ),
                           );
                         },
@@ -311,7 +321,9 @@ class _HomePageState extends State<HomePage> {
                   if (promotedServices == null) {
                     return Container();
                   } else {
-                    return PromotedServiceList(promotedServices: promotedServices,);
+                    return PromotedServiceList(
+                      promotedServices: promotedServices,
+                    );
                   }
                 }
                 return null;
@@ -331,4 +343,4 @@ class _HomePageState extends State<HomePage> {
 }
 
 @override
-  bool get wantKeepAlive => true;
+bool get wantKeepAlive => true;

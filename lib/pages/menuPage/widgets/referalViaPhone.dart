@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
+import 'package:servicehub/utils/util.dart';
 
 class ReferalViaPhone extends StatelessWidget {
   const ReferalViaPhone({Key key}) : super(key: key);
@@ -13,15 +14,7 @@ class ReferalViaPhone extends StatelessWidget {
   Widget build(BuildContext context) {
     // form key
     final _formKey = GlobalKey<FormBuilderState>();
-    // alert styling
-    var alertStyle = AlertStyle(
-        isOverlayTapDismiss: false,
-        isCloseButton: false,
-        descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('44493D')),
-        titleStyle: GoogleFonts.oxygen(
-            fontSize: 16,
-            color: HexColor('32CD32'),
-            fontWeight: FontWeight.w600));
+    
     return Container(
       width: double.infinity,
       color: Colors.white,
@@ -90,7 +83,7 @@ class ReferalViaPhone extends StatelessWidget {
                           child: TextButton(
                             onPressed: () {
                               Alert(
-                                  style: alertStyle,
+                                  style: Utilities.alertStyle(),
                                   context: context,
                                   title: "SUCCESS",
                                   desc:

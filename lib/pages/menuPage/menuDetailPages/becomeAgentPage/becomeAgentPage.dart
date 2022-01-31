@@ -9,6 +9,7 @@ import 'package:servicehub/controllers/becomeProviderController.dart';
 import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
 import 'package:servicehub/pages/ServicesListPage/controller/servicesController.dart';
 import 'package:servicehub/pages/menuPage/widgets/multi_select.dart';
+import 'package:servicehub/utils/util.dart';
 
 class BecomeAgentPage extends StatelessWidget {
   // Create Instance of the controller
@@ -19,21 +20,6 @@ class BecomeAgentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // alert styling
-    var alertStyle = AlertStyle(
-      isCloseButton: false,
-      isOverlayTapDismiss: false,
-      descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('5F5F65')),
-      descTextAlign: TextAlign.center,
-      animationDuration: Duration(milliseconds: 400),
-      alertBorder: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      titleStyle: TextStyle(
-          fontSize: 20, color: HexColor('32CD32'), fontWeight: FontWeight.w600),
-      alertAlignment: Alignment.centerRight,
-    );
-
     return GetBuilder<BecomeProviderController>(
       init: BecomeProviderController(),
       initState: (_) {},
@@ -206,7 +192,7 @@ class BecomeAgentPage extends StatelessWidget {
                                   onPressed: () {
                                     // success alert
                                     Alert(
-                                        style: alertStyle,
+                                        style: Utilities.alertStyle(),
                                         context: context,
                                         title: "SUCCESS",
                                         desc:

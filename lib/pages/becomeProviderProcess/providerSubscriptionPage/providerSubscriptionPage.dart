@@ -14,16 +14,7 @@ class ProviderSubscriptionPage extends StatefulWidget {
 }
 
 class _ProviderSubscriptionPageState extends State<ProviderSubscriptionPage> {
-  // Alert Styling
-  var alertStyle = AlertStyle(
-      isCloseButton: false,
-      isOverlayTapDismiss: false,
-      descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('44493D')),
-      titleStyle: GoogleFonts.oxygen(
-          fontSize: 16,
-          color: HexColor('32CD32'),
-          fontWeight: FontWeight.w600));
-
+  
   // location
   bool _showLocationForms = false;
   @override

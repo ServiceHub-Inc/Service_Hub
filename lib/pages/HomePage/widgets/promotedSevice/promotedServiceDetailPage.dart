@@ -15,19 +15,7 @@ import 'widget/submitRequestBottomSheet.dart';
 class PromotedServiceDetailPage extends StatelessWidget {
   final PromotedServiceDatum service;
   
-  // alert style
-  var alertStyle = AlertStyle(
-      isCloseButton: true,
-      isOverlayTapDismiss: true,
-      descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('44493D')),
-      titleStyle: GoogleFonts.oxygen(
-          fontSize: 16,
-          color: HexColor('32CD32'),
-          fontWeight: FontWeight.w600));
-  // build list function
-  // var data = Get.arguments;
-
-  PromotedServiceDetailPage(
+   PromotedServiceDetailPage(
       {Key key,
       this.service})
       : super(key: key);
@@ -126,7 +114,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                         Chip(
                             backgroundColor:
                                 HexColor('32CD32').withOpacity(0.3),
-                            label: GestureDetector(
+                            label: InkWell(
                               onTap: () {
                                 _service.call('0548739273');
                               },
@@ -405,7 +393,7 @@ class PromotedServiceDetailPage extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           Alert(
-                                  style: alertStyle,
+                                  style: Utilities.alertStyle(),
                                   buttons: [
                                     DialogButton(
                                       color: Colors.blueAccent,

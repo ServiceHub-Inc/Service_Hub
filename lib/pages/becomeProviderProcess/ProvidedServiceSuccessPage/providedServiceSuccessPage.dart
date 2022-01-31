@@ -5,16 +5,7 @@ import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
 
 // ignore: must_be_immutable
 class ProvidedServiceSuccesspage extends StatelessWidget {
-  // var alertStyle = AlertStyle(
-  //   isCloseButton: false,
-  //   isOverlayTapDismiss: false,
-  //   descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('44493D')),
-  //   titleStyle: GoogleFonts.oxygen(
-  //       fontSize: 16,
-  //       color: HexColor('32CD32'),
-  //       fontWeight: FontWeight.w600)
-  //     );
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,7 +126,7 @@ class ProvidedServiceSuccesspage extends StatelessWidget {
                       SizedBox(
                         height: 15,
                       ),
-                      Text('Service ProviASCZder Name',
+                      Text('Service Provider Name',
                           style: GoogleFonts.oxygen(
                               fontSize: 13,
                               color: HexColor('32CD32'),
@@ -164,26 +155,7 @@ class ProvidedServiceSuccesspage extends StatelessWidget {
                             builder: (context) => MyBottomNaigationBar(),
                           ),
                           (route) => false);
-                      //   Alert(
-                      //     style: alertStyle,
-                      //     buttons: [
-                      //       DialogButton(
-                      //         color: HexColor('32CD32'),
-                      //         child: Text(
-                      //           "Continue",
-                      //           style: TextStyle(color: Colors.white, fontSize: 20),
-                      //         ),
-                      //         onPressed: () {
-                      //           Get.offAllNamed('/MyBottomNavigationBar');
-                      //         },
-                      //         width: 120,
-                      //       ),
-                      //     ],
-                      //     context: context,
-                      //     title: "SUBMITTED SUCCSESSFULLY",
-                      //     desc:
-                      //         "Thank you for the interest in offering service on ServiceHub. One of our agents would be in touch with you to onboard you.")
-                      // .show();
+                      
                     },
                     child: Text('FINISH',
                         style: GoogleFonts.oxygen(

@@ -177,11 +177,19 @@ class InvoicePage extends StatelessWidget {
                             child: TextButton(
                               onPressed: () {
                                 // bottom sheet function
-                                Get.bottomSheet(Container(
-                                  height: 350,
-                                  color: Colors.white,
-                                  child: PaymentOptionsBottomSheet(),
-                                ));
+                                showModalBottomSheet(
+                                  elevation: 5.0,
+                                  barrierColor: Colors.black.withOpacity(0.4),
+                                  isDismissible: true,
+                                  context: context,
+                                  builder: (context) {
+                                    return Container(
+                                      height: 350,
+                                      color: Colors.white,
+                                      child: PaymentOptionsBottomSheet(),
+                                    );
+                                  },
+                                );
                               },
                               child: Text('PAY',
                                   style: GoogleFonts.oxygen(

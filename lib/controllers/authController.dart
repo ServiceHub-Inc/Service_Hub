@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,7 +31,7 @@ class AuthController {
           _def.setUser(res);
           storageService.isLoggedIn = true;
           storageService.username = res.email;
-          storageService.userData = userDataListFromMap(res);
+          storageService.userData = jsonEncode(res);
 
           Navigator.pushAndRemoveUntil(
             context,

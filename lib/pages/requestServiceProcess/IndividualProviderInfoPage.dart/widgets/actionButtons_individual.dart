@@ -6,20 +6,10 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:servicehub/pages/MessagesPage/chatDetailPage.dart';
 import 'package:servicehub/pages/requestServiceProcess/CorporateProviderInfoPage.dart/widgets/submitRequestBottomSheet_corporate.dart';
 import 'package:servicehub/utils/callsEmailService.dart';
+import 'package:servicehub/utils/util.dart';
 
 // ignore: must_be_immutable
 class ActionButtonsIndividual extends StatelessWidget {
-  var alertStyle = AlertStyle(
-    isCloseButton: true,
-    isOverlayTapDismiss: true,
-    descStyle: GoogleFonts.oxygen(fontSize: 14, color: HexColor('44493D')),
-    titleStyle: GoogleFonts.oxygen(
-      fontSize: 16,
-      color: HexColor('32CD32'),
-      fontWeight: FontWeight.w600,
-    ),
-  );
-
   final UrlLauncherService _service = UrlLauncherService();
 
   @override
@@ -38,7 +28,7 @@ class ActionButtonsIndividual extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Alert(
-                            style: alertStyle,
+                            style: Utilities.alertStyle(),
                             buttons: [
                               DialogButton(
                                 color: Colors.blueAccent,

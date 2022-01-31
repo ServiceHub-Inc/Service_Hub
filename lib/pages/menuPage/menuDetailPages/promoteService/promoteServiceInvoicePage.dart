@@ -74,12 +74,7 @@ class PromoteServiceInvoicePage extends StatelessWidget {
                                         PromoteServicePaymentOptionPage(),
                                   ),
                                 );
-                                //   Get.bottomSheet(
-                                //     Container(
-                                //     height: 350,
-                                //     color: Colors.white,
-                                //     child: PaymentOptionsBottomSheet(),
-                                // ));
+                                
                               },
                               child: Text('PAY',
                                   style: GoogleFonts.oxygen(

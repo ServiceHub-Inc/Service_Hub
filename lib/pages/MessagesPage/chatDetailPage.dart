@@ -109,7 +109,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                         var chat =
                             chatListController.memberChatList[reversedIndex];
 
-                        if (chat.media.mediaType == null) {
+                        if (chat.media == null || chat.media.mediaType == null) {
                           return SizedBox(
                             width: _width * 0.65,
                             child: TextMessageWidget(
