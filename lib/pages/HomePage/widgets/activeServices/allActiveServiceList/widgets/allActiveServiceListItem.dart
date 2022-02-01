@@ -1,9 +1,7 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:servicehub/controllers/serviceControllers.dart';
 import 'package:servicehub/models/pendingServiceModel.dart';
 import 'package:servicehub/pages/HomePage/widgets/activeServices/ActiveServicesDetailPages/activeServiceDetialPage/activeServiceDetailPage.dart';
 import 'package:servicehub/pages/ServicesListPage/widgets/searchbar.dart';

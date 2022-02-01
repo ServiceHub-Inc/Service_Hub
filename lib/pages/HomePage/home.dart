@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:servicehub/controllers/serviceControllers.dart';
@@ -91,9 +90,9 @@ class _HomePageState extends State<HomePage> {
           children: [
             // Popular write ups
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+              padding: EdgeInsets.symmetric(vertical: 1, horizontal: 5),
               child: Container(
-                height: height * 0.05,
+                height: height * 0.044,
                 width: width,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -169,9 +168,9 @@ class _HomePageState extends State<HomePage> {
 
             // Popular write ups
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+              padding: EdgeInsets.symmetric(vertical: 1, horizontal: 5),
               child: Container(
-                height: height * 0.05,
+                height: height * 0.044,
                 width: width,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -253,9 +252,9 @@ class _HomePageState extends State<HomePage> {
             ),
 
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 2, horizontal: 5),
+              padding: EdgeInsets.symmetric(vertical: 1, horizontal: 5),
               child: Container(
-                height: height * 0.05,
+                height: height * 0.044,
                 width: width,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(

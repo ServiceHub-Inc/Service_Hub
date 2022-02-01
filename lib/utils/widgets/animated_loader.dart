@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'loader.dart';
 
 class AnimatedLoader extends StatefulWidget {
@@ -27,7 +26,7 @@ class _AnimatedLoaderState extends State<AnimatedLoader>
 
   @override
   Widget build(BuildContext context) {
-    final _height = MediaQuery.of(context).size.height;
+    // final _height = MediaQuery.of(context).size.height;
     final _width = MediaQuery.of(context).size.width;
     return ScaleTransition(
         scale: Tween(begin: 0.95, end: 1.03).animate(controller),

@@ -28,7 +28,6 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
 
   @override
   void initState() {
-    ;
     _focusNode.addListener(() {
       if (_focusNode.hasFocus && _controller.text.isNotEmpty) {
         setState(() {

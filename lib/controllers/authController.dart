@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:servicehub/apis/auth_api.dart';
-import 'package:servicehub/models/loginModel.dart';
 import 'package:servicehub/pages/HomePage/widgets/BottomNavigationBar.dart';
 import 'package:servicehub/provider/globals.dart';
 import 'package:servicehub/utils/internet_check.dart';

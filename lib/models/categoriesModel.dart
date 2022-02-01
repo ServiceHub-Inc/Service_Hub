@@ -4,11 +4,18 @@
 
 import 'dart:convert';
 
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:servicehub/models/mini_models.dart';
+
 ServiceCategoriesModel serviceCategoriesModelFromJson(String str) =>
     ServiceCategoriesModel.fromJson(json.decode(str));
 
 String serviceCategoriesModelToJson(ServiceCategoriesModel data) =>
     json.encode(data.toJson());
+
+List<ListOfItemsModel> categoriesToList(List<CategoryDatum> data) =>
+  data.map((item) => ListOfItemsModel(
+      name: item.name, value: item.id, secondLabel: item.description, icon: EvaIcons.briefcaseOutline,)).toList();
 
 class ServiceCategoriesModel {
   ServiceCategoriesModel({

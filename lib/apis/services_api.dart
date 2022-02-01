@@ -8,6 +8,45 @@ import 'package:servicehub/models/promotedServiceModel.dart';
 import 'package:servicehub/utils/constants.dart';
 
 class ServicesApi {
+  static Future createService(Map<String, dynamic> details) async {
+    print("API called");
+    final url = "${Constants.url}/create-service";
+    print(url);
+
+    final response = await http.post(
+      Uri.parse(url),
+      headers: Constants.header,
+      body:jsonEncode(details),
+    );
+
+    print("===== created service =======");
+    print(response.body);
+    print("======");
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> result = json.decode(response.body);
+      // PendingServiceModel res = pendingServiceModelFromJson(response.body);
+
+      if (result["code"] == "000") {
+        print("00000000");
+        return result["data"];
+      } else {
+        throw PlatformException(
+          code: result["code"].toString(),
+          message: result["message"].toString(),
+        );
+      }
+      // return responds;
+    } else {
+      // return null;
+      print(response.statusCode);
+      throw PlatformException(
+        code: response.statusCode.toString(),
+        message: "Error connecting to server",
+      );
+    }
+  }
+
   static Future<List<PendingServiceDatum>> pendingServices() async {
     print("API called");
     final url = "${Constants.url}/pending-services";
