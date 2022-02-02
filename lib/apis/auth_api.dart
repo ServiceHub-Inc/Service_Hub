@@ -26,6 +26,13 @@ class AuthApi {
       if (result["code"] == "000") {
         LoginModel res = loginModelFromJson(response.body.toString());
         return res.data;
+      } else if (result["code"] == "666") {
+        Map<String, dynamic> errors = result["data"];
+        throw PlatformException(
+          code: result["code"].toString(),
+          message:
+              "${result["message"].toString()} - ${errors.entries.first.value}",
+        );
       } else {
         throw PlatformException(
           code: result["code"].toString(),
@@ -80,6 +87,13 @@ class AuthApi {
       if (result["code"] == "000") {
         LoginModel res = loginModelFromJson(response.body.toString());
         return res.data;
+      } else if (result["code"] == "666") {
+        Map<String, dynamic> errors = result["data"];
+        throw PlatformException(
+          code: result["code"].toString(),
+          message:
+              "${result["message"].toString()} - ${errors.entries.first.value}",
+        );
       } else {
         throw PlatformException(
           code: result["code"].toString(),

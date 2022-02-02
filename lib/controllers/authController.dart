@@ -86,7 +86,8 @@ class AuthController {
         if (res != null) {
           _def.setUser(res);
           storageService.isLoggedIn = true;
-          storageService.username = res.userId;
+          storageService.username = res.email;
+          storageService.userData = jsonEncode(res);
 
           Navigator.pushAndRemoveUntil(
             context,
