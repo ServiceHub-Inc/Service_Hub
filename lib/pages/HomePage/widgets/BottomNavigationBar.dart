@@ -1,5 +1,5 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-import 'package:flashy_tab_bar/flashy_tab_bar.dart';
+import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:servicehub/pages/HomePage/home.dart';
@@ -33,7 +33,6 @@ class _MyBottomNaigationBarState extends State<MyBottomNaigationBar> {
       onWillPop: () async => false,
       child: Scaffold(
         body: _children[_currentIndex],
-
         bottomNavigationBar: FlashyTabBar(
           selectedIndex: _currentIndex,
           showElevation: true,
